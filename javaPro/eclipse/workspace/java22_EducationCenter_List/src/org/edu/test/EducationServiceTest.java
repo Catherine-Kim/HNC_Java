@@ -77,7 +77,7 @@ public class EducationServiceTest {
 		} catch (RecordNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		service.getPersons();
 	}
 }
