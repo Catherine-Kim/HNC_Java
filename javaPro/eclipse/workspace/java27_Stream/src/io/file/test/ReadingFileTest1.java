@@ -10,7 +10,8 @@ import java.io.IOException;
 public class ReadingFileTest1{
 	public static void main(String[] args) throws IOException{
 		String fileName = "src\\io\\file\\test\\hello.txt";
-		BufferedReader br = new BufferedReader(new FileReader(fileName));
+		File file = new File(fileName);
+		BufferedReader br = new BufferedReader(new FileReader(file));
 		
 		String s = null;
 		while((s = br.readLine()) != null){
