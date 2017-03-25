@@ -45,7 +45,7 @@ public class FileStreamTest1 {
 		String contents = null;
 		while((contents = br.readLine()) != null){
 			pw.write(contents + "\n");
-		}
+		}		
 		
 		pw.close();
 		
