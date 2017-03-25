@@ -41,7 +41,7 @@ public class FileStreamTest1 {
 		DataOutputStream dos1 = new DataOutputStream(fos1);
 		DataOutputStream dos2 = new DataOutputStream(fos2);
 		
-		// Data reading
+		// Data reading & Stream closing
 		String contents = null;
 		while((contents = br.readLine()) != null){
 			pw.write(contents + "\n");
