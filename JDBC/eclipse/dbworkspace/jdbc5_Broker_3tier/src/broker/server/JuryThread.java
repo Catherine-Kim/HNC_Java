@@ -58,7 +58,7 @@ public class JuryThread extends Thread{
 			
 			// 3. commandValue에 따른 Database의 메소드를 호출한다
 			switch(comm){
-			case 10:	// buyShares()
+			case Command.BUYSHARES:	// buyShares()
 				try {
 					db.buyShares(args[0], args[1], Integer.parseInt(args[2]));
 					r.setStatus(0);
@@ -67,7 +67,7 @@ public class JuryThread extends Thread{
 				}
 				break;
 				
-			case 20: // sellShares()
+			case Command.SELLSHARES: // sellShares()
 				try {
 					db.sellShares(args[0], args[1], Integer.parseInt(args[2]));
 					r.setStatus(0);
@@ -80,7 +80,7 @@ public class JuryThread extends Thread{
 				}
 				break;
 				
-			case 30:	// getAllStocks()
+			case Command.GETALLSTOCK:	// getAllStocks()
 				ArrayList<StockRec> list;
 				try {
 					list = db.getAllStocks();
@@ -91,11 +91,11 @@ public class JuryThread extends Thread{
 				}
 				break;
 			
-			case 40:	// getStockPrice()
+			case Command.GETSTOCKPRICE:	// getStockPrice()
 				float price;
 				try{
 					price = db.getStcokPrice(args[0]);
-					r.add(price);
+					r.add(price);				// 원래는 객체로 넣어야 되는데 요즘은 호환이 됨
 					r.setStatus(0);
 				}catch(RecordNotFoundException e){
 					r.setStatus(-1);
@@ -104,7 +104,7 @@ public class JuryThread extends Thread{
 				}
 				break;
 				
-			case 50:	// getAllCustomers()
+			case Command.GETALLCUSTOMERS:	// getAllCustomers()
 				//clist;
 				try{
 					ArrayList<CustomerRec>  clist = db.getAllCustomers();
@@ -116,7 +116,7 @@ public class JuryThread extends Thread{
 				}
 				break;
 				
-			case 60:	// getCustomer()
+			case Command.GETCUSTOMER:	// getCustomer()
 				CustomerRec c;
 				try{
 					c = db.getCustomer(args[0]);
@@ -127,18 +127,18 @@ public class JuryThread extends Thread{
 				}
 				break;
 				
-			case 70:	// addCustomer()
+			case Command.ADDCUSTOMER:	// addCustomer()
 				try{
 					db.addCustomer(new CustomerRec(args[0], args[1], args[2]));
 					r.setStatus(0);
 				}catch(DuplicateSSNException e){
-					r.setStatus(-1);
+					r.setStatus(-2);
 				}catch(SQLException e){
 					r.setStatus(-1);
 				}
 				break;
 				
-			case 80:	// deleteCustomer()
+			case Command.DELETECUSTOMER:	// deleteCustomer()
 				try{
 					db.deleteCustomer(args[0]);
 					r.setStatus(0);
@@ -149,7 +149,7 @@ public class JuryThread extends Thread{
 				}
 				break;
 				
-			case 90:	// updateCustomer()
+			case Command.UPDATECUSTOMER:	// updateCustomer()
 				try{
 					db.updateCustomer(new CustomerRec(args[0], args[1], args[2]));
 					r.setStatus(0);

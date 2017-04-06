@@ -7,8 +7,8 @@ import broker.exception.DuplicateSSNException;
  * status :: 
  * RecordNotFoundException : -1
  * InvalidTransactionException : -3    
- * DuplicateSSNException : -1
- * SQLException : -1
+ * DuplicateSSNException : -2
+ * SQLException : -1 or Nothing
  */
 public class Result extends ArrayList{
 	private int status;
