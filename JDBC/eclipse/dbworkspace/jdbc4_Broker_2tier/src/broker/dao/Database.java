@@ -175,7 +175,7 @@ public class Database {
 			 ps = conn.prepareStatement(sql);
 			 rs = ps.executeQuery();
 			 while(rs.next()){
-				 list.add(new CustomerRec(rs.getString("ssn"), rs.getString("cust_naem"), rs.getString("address"), getPortfolio(rs.getString("ssn"))));
+				 list.add(new CustomerRec(rs.getString("ssn"), rs.getString("cust_name"), rs.getString("address"), getPortfolio(rs.getString("ssn"))));
 			 }
 		 }finally{
 			 closeAll(rs, ps, conn);
