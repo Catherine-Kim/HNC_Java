@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <servlet>
+    <description></description>
+    <display-name>FormServlet</display-name>
+    <servlet-name>FormServlet</servlet-name>
+    <servlet-class>servlet.form.FormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FormServlet</servlet-name>
+    <url-pattern>/FrmServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectServletTest</display-name>
+    <servlet-name>SelectServletTest</servlet-name>
+    <servlet-class>servlet.form.SelectServletTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectServletTest</servlet-name>
+    <url-pattern>/SST</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CheckBoxServletTest</display-name>
+    <servlet-name>CheckBoxServletTest</servlet-name>
+    <servlet-class>servlet.form.CheckBoxServletTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckBoxServletTest</servlet-name>
+    <url-pattern>/CBST</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MultiFormServlet</display-name>
+    <servlet-name>MultiFormServlet</servlet-name>
+    <servlet-class>servlet.form.MultiFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MultiFormServlet</servlet-name>
+    <url-pattern>/MFS</url-pattern>
+  </servlet-mapping>
+</web-app>
