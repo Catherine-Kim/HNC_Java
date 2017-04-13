@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>img의 다른 속성들</title>
+<style>
+table {
+	border: 1px solid green;
+	text-align: center;
+	margin: 30px;
+	float: left;
+}
+
+table td{
+	padding: 30px;
+}
+
+table.rara01{
+	background-color: yellow;
+}
+
+table.rara02{
+	background-image: url("./img/dot-bg.jpg");
+}
+	
+.rara02 td{
+	border: 2px dotted purple;
+}
+</style>
+</head>
+<body>
+	<h2 align="center">class 속성, margin과 padding의 차이점</h2><p>
+	<table class="rara01">
+		<tr>
+			<td>클라라 시구장면 1</td>
+			<td><img src="img/rara.jpg" ></td>
+		</tr>
+	</table>
+	<table class="rara02">
+		<tr>
+			<td>클라라 시구장면 2</td>
+			<td><img src="img/rara.jpg" ></td>
+		</tr>
+	</table>
+</body>
+</html>
