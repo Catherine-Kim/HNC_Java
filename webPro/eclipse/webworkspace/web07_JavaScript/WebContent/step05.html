@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function showNickName(){
+		var nickname = document.LoginForm.nick.value;
+		alert("HI~" + nickname);
+		document.LoginForm.nick.value="";	// nick 초기화
+		document.LoginForm.hobby.focus();	// hobby에 커서 뜸
+	}
+	
+	 function showHobby(){
+		var nf = document.LoginForm.nick;
+		var hf = document.LoginForm.hobby;
+		alert(nf.value + "님은 " + hf.value + "가 취미이시군욯ㅎ");
+		nf.value = "";
+		hf.value = "";
+		hf.focus();
+	} 
+</script>
+</head>
+<body bgcolor="orange">
+	<form name="LoginForm">
+		닉네임 : <input type="text" name="nick">
+		<input type="button" value="click" onclick="showNickName()">
+		<br/><br/>
+		취미 : <input type="text" name="hobby">
+		<input type="button" value="취미보기" onclick="showHobby()">
+	</form>
+</body>
+</html>

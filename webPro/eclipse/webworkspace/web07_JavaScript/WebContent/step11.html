@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function bestMenus() {
+		var mf = document.bestM.menu;
+		
+		var str = "";
+		for(i=0; i<mf.length; i++){
+			if(mf[i].checked){
+				str += mf[i].value + " ";
+				mf[i].checked = false;
+			}
+		}
+		if(str=="") alert("적어도 하나는 선택하자^^");
+		else alert(str);
+	}
+</script>
+</head>
+<body>
+	<b>좋아하는 음식들을 선택해보라우(다중선택 ㅇㅋ)</b><p>
+	<form name="bestM">
+		<input type="checkbox" name="menu" value="Pasta">Pasta<br>
+		<input type="checkbox" name="menu" value="Pizza">Pizza<br>
+		<input type="checkbox" name="menu" value="Hamburger">Hamburger<br>
+		<input type="checkbox" name="menu" value="Salad">Salad<br>
+		<input type="button" value="Best Movie" onclick="bestMenus()">
+	</form>
+</body>
+</html>

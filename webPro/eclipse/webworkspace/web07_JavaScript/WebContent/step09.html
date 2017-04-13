@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>html, javascript 분리</title>
+<script type="text/javascript">
+	function createArr() {
+		// 1. 배열 생성
+		var arr = new Array(3);
+		
+		// 2. 값 할당
+		arr[0] = "곱창";
+		arr[1] = "참이슬";
+		arr[2] = "김치찌개";
+		
+		// 3. 출력
+		var str = "";
+		for(i=0; i<3; i++){
+			str += arr[i] + " ";
+		}
+		alert(str);
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="ArrayTest" onclick="createArr()">
+</body>
+</html>

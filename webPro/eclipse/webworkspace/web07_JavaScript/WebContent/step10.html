@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Movie</title>
+<script type="text/javascript">
+	function bestMovie() {
+		var mf = document.bestM.movie;
+		var flag = false;
+		
+		for(i=0; i<mf.length; i++){
+			if(mf[i].checked){
+				flag = true;
+				alert(mf[i].value + "가 Best Movie로 선정되었따네");
+				mf[i].checked=false;
+				break;
+			}
+		}
+		
+		if(flag == false)
+			alert("적어도 하나는 선택하시지");
+	}
+</script>
+</head>
+<body>
+	<b>가장 감동깊게 보신 영화를 하나만 선택해보세요</b><p>
+	<form name="bestM">
+		<input type="radio" name="movie" value="Gladiator">Gladiator<br>
+		<input type="radio" name="movie" value="Interstella">Interstella<br>
+		<input type="radio" name="movie" value="Memento">Memento<br>
+		<input type="radio" name="movie" value="Inception">Inception<br>
+		<input type="button" value="Best Movie" onclick="bestMovie()">
+	</form>
+</body>
+</html>

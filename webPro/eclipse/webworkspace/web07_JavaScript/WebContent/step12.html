@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function selectLine(){
+		var lf = document.subwayForm.line;
+
+		if(lf.value != null) alert(lf.value + "을 탑니당..");
+		// else는 여기서 나올 수가 없음
+	}
+</script>
+</head>
+<body>
+<b>여러분이 퇴근 시 이용하시는 지하철의 노선을 선택하라규</b><p>
+<form name="subwayForm">
+	<select name="line"multiple="multiple" onchange="selectLine()">
+		<option value="line1">1호선</option>
+		<option value="line2">2호선</option>
+		<option value="line3">3호선</option>
+		<option value="line4">4호선</option>
+		<option value="line5">5호선</option>
+		<option value="line6">6호선</option>
+		<option value="line7">7호선</option>
+		<option value="line8">8호선</option>
+		<option value="line9">9호선</option>
+		<option value="no">no</option>
+	</select>
+</form>
+</body>
+</html>

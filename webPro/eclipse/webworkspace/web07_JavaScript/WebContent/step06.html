@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	table {
+		text-align: center;
+		background-color: yellow;
+		margin: auto;
+		border-spacing: 0em;
+	}
+</style>
+<script type="text/javascript">
+	function login(){
+		var idBox = document.LoginForm.id;
+		var passBox = document.LoginForm.pass;
+		
+		if(idBox.value != ""){
+			if(passBox.value != ""){
+				location.href = "login.jsp?id="+idBox.value+"&pass="+passBox.value;
+				idBox.value = "";
+				passBox.value="";
+			}else{
+				alert("비밀번호도 입력하셔야지");
+				passBox.focus();
+			}
+		}else{
+			alert("ID 입력하삼");
+			idBox.focus();
+		}
+	}
+</script>
+</head>
+<body>
+	<h2 align="center">LOGIN FORM</h2>
+	<form name="LoginForm">
+		<table border="1">
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name="id" size="22"></td>
+			</tr>
+			<tr>
+				<td>패스워드</td>
+				<td><input type="password" name="pass" size="22"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="button" value="LOGIN"
+					onclick="login()"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
