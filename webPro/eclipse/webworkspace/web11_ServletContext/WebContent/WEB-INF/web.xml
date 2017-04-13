@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <listener>
+  	<listener-class>listener.MyListener</listener-class>
+  </listener>                                                                                
+  <context-param>
+  	<param-name>NAME</param-name>
+  	<param-value>Friendship</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>SCHOOL</param-name>
+  	<param-value>Dankook University</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>EMAIL</param-name>
+  	<param-value>woojong610@gmail.com</param-value>
+  </context-param>           
+  <context-param>
+  	<param-name>path</param-name>
+  	<param-value>WEB-INF\member.txt</param-value>
+  </context-param>                                                                                                                                
+  <servlet>
+    <description></description>
+    <display-name>ServletContextWriting1</display-name>
+    <servlet-name>ServletContextWriting1</servlet-name>
+    <servlet-class>servlet.context.ServletContextWriting1</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletContextWriting1</servlet-name>
+    <url-pattern>/SC1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletContextReading1</display-name>
+    <servlet-name>ServletContextReading1</servlet-name>
+    <servlet-class>servlet.context.ServletContextReading1</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletContextReading1</servlet-name>
+    <url-pattern>/SC2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletContextInit22</display-name>
+    <servlet-name>ServletContextInit22</servlet-name>
+    <servlet-class>servlet.context.ServletContextInit22</servlet-class>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletContextInit22</servlet-name>
+    <url-pattern>/Context2</url-pattern>
+  </servlet-mapping>
+</web-app>
