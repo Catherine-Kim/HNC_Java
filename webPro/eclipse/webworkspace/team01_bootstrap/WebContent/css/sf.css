@@ -1,0 +1,67 @@
+@CHARSET "EUC-KR";
+
+body {
+	text-align: center;
+}
+
+section {
+	height: 759px;
+}
+
+#firstS {
+	/*background-image: url("../img/ggg.jpg");*/
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	color: white;
+	text-align: left;
+}
+
+#secondS {
+	background-color: #ffffff;
+}
+
+video {
+	height: 700px;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -100;
+	background: url(video/sanv.jpg) no-repeat;
+	background-size: cover;
+	filter: grayscale(100%);
+}
+
+#thirdS {
+	/* background-image: url("../img/ppl.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat; */
+	background-color: #cbed95;
+}
+
+#welcome_div {
+	padding-top: 300px;
+}
+
+.about_div {
+	padding-top: 200px;
+}
+
+#about_pic {
+	padding-top: 200px;
+}
+
+#top_btn{
+	position: fixed;
+	bottom : 20px;
+	right: 20px;
+}
+
+/* footer{
+	margin-bottom: 0px;
+	background-color: white;
+	top: 300px;
+} */
