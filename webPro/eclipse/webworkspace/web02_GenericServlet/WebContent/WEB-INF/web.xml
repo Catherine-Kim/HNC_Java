@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <servlet>
+    <servlet-name>HelloGeneric1</servlet-name>
+    <servlet-class>web.generic.HelloGeneric1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloGeneric1</servlet-name>
+    <url-pattern>/Generic1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>GenericServlet을 상속받아 작성하는 서블릿 클래스</description>
+    <display-name>HelloGeneric2</display-name>
+    <servlet-name>HelloGeneric2</servlet-name>
+    <servlet-class>web.generic.HelloGeneric2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloGeneric2</servlet-name>
+    <url-pattern>/HelloGeneric2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>HttpServlet을 상속받아 작성하는 서블릿 클래스</description>
+    <display-name>HelloGeneric3</display-name>
+    <servlet-name>HelloGeneric3</servlet-name>
+    <servlet-class>web.generic.HelloGeneric3</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloGeneric3</servlet-name>
+    <url-pattern>/H3</url-pattern>
+  </servlet-mapping>
+</web-app>
