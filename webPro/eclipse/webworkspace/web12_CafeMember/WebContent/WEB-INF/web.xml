@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <listener>
+    <listener-class>listener.MyDriverListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>ODriver</param-name>
+    <param-value>oracle.jdbc.Driver.OracleDriver</param-value>
+  </context-param>
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EntranceServlet</display-name>
+    <servlet-name>EntranceServlet</servlet-name>
+    <servlet-class>servlet.cafe.EntranceServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EntranceServlet</servlet-name>
+    <url-pattern>/Enter</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResultViewServlet</display-name>
+    <servlet-name>ResultViewServlet</servlet-name>
+    <servlet-class>servlet.cafe.ResultViewServlet</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResultViewServlet</servlet-name>
+    <url-pattern>/ResultView</url-pattern>
+  </servlet-mapping>
+</web-app>

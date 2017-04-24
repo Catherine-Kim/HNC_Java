@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function checkAge(){
+		var ageBox = document.enterFrm.age;
+		if(isNan(ageBox.value)){
+			alert("숫자만 입력하셈");
+			ageBox.value = "";
+			ageBox.focus();
+			return false;	// action 페이지로 넘어가지 않게 해줌
+		}
+	}
+</script>
+</head>
+<body>
+<h2 align="center"><b>Cafe 입장을 환영한다규</b></h2><p>
+<form action="Enter" method="GET" name="enterFrm" onsubmit="return checkAge()">
+	이름 : <input type="text" name="name" required="required"><br/><br/>
+	나이 : <input type="text" name="age" required="required"><br/><br/>
+	<input type="submit" value="Cafe 입장ㄱ">
+</form>
+</body>
+</html>
