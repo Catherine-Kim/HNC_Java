@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	body{
+		background-image: url("./img/dot.jpg");
+	}
+</style>
+<script type="text/javascript">
+	function checkPass(){
+		var frm = document.registerfrm;
+		if(frm.password.value != frm.repassword.value){
+			alert("패스워드 틀림");
+			frm.repassword.value = "";
+			frm.repassword.focus();
+			return false;
+		}
+	}
+</script>
+</head>
+<body>
+	<h2 align="center"><b>Register Member Form</b></h2><p>
+	<form action="Register" method="POST" onsubmit="return checkPass()" name="registerfrm">
+		ID : <input type="text" name="id" required="required"><br />
+		<br /> PASSWORD : <input type="password" name="password"
+			required="required"><br />
+		<br /> PASSWORD CONFIRM : <input type="password" name="repassword"
+			required="required"> 
+		<br /> NAME : <input type="text" name="name"
+			required="required"><br />
+		<br /> ADDRESS : <input type="text" name="address" required="required"><br />
+		<br /> <input type="submit" value="register member">
+	</form>
+</body>
+</html>

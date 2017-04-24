@@ -1,0 +1,57 @@
+******************** Connection Pool이란? ******************** 
+JDBC를 연동하기 위해서는 즉,
+서버 상의 DAO에서 Database를 Access하기 위해서는 주4요한 작업의 단계 로직이 필수적이다.
+1) 드라이버 로딩
+2) DB 서버에 연결하여 Connection 생성
+3) PreparedStatement 생성
+4) 쿼리문 수행
+
+이 중에서 가장 많은 시간과 자원이 요구되는 단계는 몇 2단계 - Connection을 얻어오는 단계이다.
+DriverManager의 getConnection(url, user, password) 방식으로 DB에 연결한다는 것은
+Client가 요청을 할 때마다 DB 서버에 접속해서 Connection을 일일이 생성해야함을 뜻한다.
+그렇기 때문에 서버 입장에서는 상당히 비효율적이고, 현업의 상황을 고려했을 때 이는 불가능한 작업 방식이다.
+
+해결방법 : Client의 요청이 들어오기 이전에 Connection 객체는 서버 상에서 미리 만들어져있어야 하고,
+요청이 들어오면 만들어놓은 Connection 중 임의로 하나를 Rent해가는 방식
+--> DattSource의 getConnection()을 이용
+
+미리 생성해놓은 Connection을 빌려쓰면 되기 때문에 서버의 성능이 향상될 뿐만 아니라, 응답이 끝나더라도
+다 쓴 Connection 객체가 소멸되는 것이 아니라 다시 Pool로 반환되기 때문에 자원의 효율성도 매우 뛰어나게 된다.
+
+
+******************** 구현원리 ******************** 
+Connection Factory
+javax.sql의 DataSource 인터페이스는 Sun이 제공하는 것
+BasicDataSourceFactory는 Apache가 DataSource 타입으로 만든 Connection Factory(WAS가 제공) - polymorphism
+- Container의 기능
+
+프로그램 사용 방법
+Naming Service, JNDI API 사용
+이름으로 BasicDataSourceFactory를 등록하고, 그 이름으로 BasicDataSourceFactory를 찾아오는 서비스
+
+1) 등록(binding) - Container 차원의 등록, which means META-INF > Context.xml에 정보를 등록
+	<Context>
+		<Resource
+			name="jdbc/oracleDBS"
+			auth="Container"
+			type="javax.sql.DataSource"
+			username="hr"
+			password="hr"
+			driverClassName="oracle.jdbc.driver.OracleDriver"
+			url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
+			factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory"
+			maxActive="500"
+			maxIdle="30"
+		/>
+	</Context>
+
+2) 찾아오기(lookup)
+	(1) 객체 생성
+	Context ic = new InitialContext();
+
+	(2) 찾아오기
+	DataSource ds = (DataSource) ic.lookup("java:comp/env/jdbc/oracleDBS");
+
+	(3) Connection 받아내기
+	Connection conn = ds.getConnection();
+
