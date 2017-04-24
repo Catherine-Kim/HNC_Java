@@ -1,0 +1,40 @@
+RequestDispatcher의 forward()를 이용하면, 
+서버 상의 Servlet에서 바로 서버 상의 페이지로 이동할 수 있다.
+이 때, Client가 요청한 Servlet의 모든 제어권(Request, Response)이 이동할 (View) 페이지로
+넘어가 버리기에,  최종적인 응답은 View 페이지가 하지만 주소창의 이름은 Servlet 이름이 뜬다.
+(Servlet에서 넘겨준 페이지니까)
+
+또한 Servlet의 out.println() 부분은 전혀 출력되지 않는데,
+이는 PrintWriter의 응답은 이동한 마지막 페이지에서 한꺼번에 웹브라우저로 출력되기 때문이다.
+이런 점 때문에, forward()이 호출되는 Servlet 코드에서는 out.println() 부분이 나올 필요가 없다.
+
+외관상 보기에는 서버상에 Servlet과 View 페이지 역할을 하는 JSP 이렇게 두 개의 파일이 존재함에도
+불구하고, 데이터를 저장하는 공간으로는 ServletRequest가 가장 효율적이다.
+왜냐하면 서버상에서 바로 이동이 가능함을 의미하기 때문이다.
+즉, View 페이지를 요청할 때 다시 웹 브라우저를 거치지 않아도 됨을 뜻한다.
+
+---------------------------------------------------------------------------------------
+
+RequestDispatcher의 include()를 이용하면,
+path에 적시된 page가 해당 메소드가 있는 바로 그 자리로 including 된다.
+그렇기 때문에, include() 되기 전이나 후나 모든 경우에서 out.println()이 작동된다는 것이 
+forwarding과는 상당히 다른 부분이다.
+
+1) RequestDispatcher를 얻어내는 기능
+- request.getRequestDispatcher("path")
+- getServletContext().getRequestDispatcher("path") 
+--> ServletContext도 getRequestDispatcher()를 가지고 있다. 둘의 차이점은?
+	- request.getRequestDispatcher("path") : path가 상대경로(절대경로도 가능은 함)
+	- getServletContext().getRequestDispatcher("path") : path는 절대경로만 가능
+	- 귀찮으니까 request거를 더 많이 씀
+
+2) Attribute : 서버상에서 Data를 저장하는 공간
+			   Attribute 공간에 Data를 Writing/Reading하는 기능을 가지고 있다.
+			   Writing - setAttribute("name", Object)
+			   Reading - getAttribute("name")
+			   
+<데이터가 유지되는 Scope>
+- ServletContext : 서버가 가동되는 동안(서버 켜져서 꺼지기 전까지)
+- HttpSession : Client가 서버에 로그인하고 있는 동안
+- ServletRequest : 한 번의 요청과 응답 사이에서만
+				     응답이 완료되면 자동적으로 ServletRequest는 소멸되고 그 안에 Data도 없어진다.
