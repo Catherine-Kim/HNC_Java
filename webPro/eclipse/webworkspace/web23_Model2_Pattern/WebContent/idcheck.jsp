@@ -15,6 +15,7 @@
 			of.id.value="";
 			of.id.focus();
 		}else{
+			of.flag.value = true;
 			of.password.focus();
 		}
 		

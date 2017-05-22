@@ -23,7 +23,7 @@
 	 로그인 성공--login_ok.jsp로 이동
 	 로그인 실패--login_fail.jsp로 이동
 -->
-<form action="LoginServlet" name="loginForm" onsubmit="return checkLogin()">
+<form action="LoginServlet" name="loginForm" onsubmit="return checkLogin()" method="POST">
 	아이디 : <input type="text" name="id"><br>
 	패스워드 : <input type="password" name="password"><br>
 	<input type="submit" value="전송">

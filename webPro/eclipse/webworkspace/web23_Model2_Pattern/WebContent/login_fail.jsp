@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h2 align="center">로그인 실패데쓰</h2>
+<a href="login.jsp">다시 로그인 ㄱㄱ</a>
 </body>
 </html>

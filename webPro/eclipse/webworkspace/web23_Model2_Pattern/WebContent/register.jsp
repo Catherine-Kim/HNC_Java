@@ -15,6 +15,11 @@
 	
 	function doubleCheck() {
 		// 중복확인을 누르지 않고 Register 버튼을 누르면 넘어가지 못하게 해야함
+		var f = document.registerFrm;
+		if(f.flag.value == 'false'){
+			alert("ID 중복 확인하고 오시지");
+			return false;
+		}
 	}
 </script>
 </head>
@@ -27,6 +32,7 @@
 	PASSWORD : <input type="password" name="password" required="required"><br/>
 	NAME : <input type="text" name="name" required="required"><br/>
 	ADDRESS : <input type="text" name="address" required="required"><br/>
+	<input type="hidden" name="flag" value="false">
 	<input type="submit" value="Register">
 </form>
 </body>
