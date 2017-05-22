@@ -1,0 +1,47 @@
+DROP TABLE book PURGE;
+
+CREATE TABLE book(
+book_no number primary key,
+title varchar2(100) not null,
+price number not null);
+
+create sequence book_seq nocache;
+
+INSERT INTO book VALUES(book_seq.nextVal,'자바의 정석',23000);
+INSERT INTO book VALUES(book_seq.nextVal,'스프링',32000);
+INSERT INTO book VALUES(book_seq.nextVal,'Ajax',25000);
+INSERT INTO book VALUES(book_seq.nextVal,'생의 의지',16000);
+commit;
+/////////////////////////////////////////////////////////////////////
+
+페이징 처리 시 반드시 알아둬야 할 쿼리문
+
+1. book_no라는 컬럼을 기준으로 정렬
+높은 번호가 맨 위에 가도록(최신글이 맨 위에 가도록) 내림차순 정렬
+	(4 → 3 → 2 → 1)
+
+1) 내림차순 정렬
+SELECT 컬럼명, 컬럼명 FROM 테이블명 ORDER BY 정렬의 기준이 되는 컬럼명 DESC
+→ SELECT book_no, title, price FROM book ORDER BY book_no DESC;
+
+2) 오름차순 정렬
+SELECT 컬럼명, 컬럼명 FROM 테이블명 ORDER BY 정렬의 기준이 되는 컬럼명 ASC
+→ SELECT book_no, title, price FROM book ORDER BY book_no ASC;
+
+3) 아무것도 하지 않을 때
+SELECT 컬럼명, 컬럼명 FROM 테이블명 ORDER BY 정렬의 기준이 되는 컬럼명 : default는 오름차순
+→ SELECT book_no, title, price FROM book ORDER BY book_no;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
