@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="emp1" class="self3.Employee">
+		<constructor-arg index="0" value="Woojeong Kim"/>
+		<constructor-arg index="1" value="24"/>
+		<constructor-arg index="2" value="Austin, Texas"/>
+	</bean>
+	<bean id="emp2" class="self3.Employee">
+		<constructor-arg index="0" value="Jimin Park"/>
+		<constructor-arg index="1" value="23"/>
+		<constructor-arg index="2" value="LA, California"/>
+	</bean>
+	<bean id="emp3" class="self3.Employee">
+		<constructor-arg index="0" value="Jeongkook Jeon"/>
+		<constructor-arg index="1" value="21"/>
+		<constructor-arg index="2" value="Pasadena, Colorado"/>
+	</bean>
+
+	<bean id="company" class="self3.CompanyImpl">
+		<property name="list">
+			<list>
+				<ref bean="emp1"/>
+				<ref bean="emp2"/>
+				<ref bean="emp3"/>
+			</list>
+		</property>
+	</bean>
+</beans>

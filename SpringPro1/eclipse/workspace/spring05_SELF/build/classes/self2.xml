@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="acc1" class="self2.AccountImpl">
+		<constructor-arg name="balance" value="100000.00" />
+		<constructor-arg name="number" value="101100" />
+	</bean>
+	<bean id="acc2" class="self2.AccountImpl">
+		<constructor-arg name="balance" value="55000.00" />
+		<constructor-arg name="number" value="222001" />
+	</bean>
+	<bean id="acc3" class="self2.AccountImpl">
+		<constructor-arg name="balance" value="4550.50" />
+		<constructor-arg name="number" value="330303" />
+	</bean>
+
+	<bean id="cust" class="self2.CustomerImpl">
+		<constructor-arg name="name" value="Catherine Kim"/>
+		<constructor-arg name="ssn" value="3212"/>
+		<constructor-arg name="address" value="Austin, Texas"/>
+		<property name="list">
+			<list>
+				<ref bean="acc1"/>
+				<ref bean="acc2"/>
+				<ref bean="acc3"/>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

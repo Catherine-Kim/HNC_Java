@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="acc" class="self.AccountImpl">
+		<constructor-arg name="balance" value="100000.00"/>
+		<constructor-arg name="number" value="101100"/>
+	</bean>
+
+	<bean id="cust" class="self.CustomerImpl">
+		<constructor-arg type="string" value="Catherine Kim"/>
+		<constructor-arg type="int" value="3212"/>
+		<constructor-arg index="2" value="Austin, Texas"/>
+		<property name="acc" ref="acc"></property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="ha1" class="self4.HomeAppliance">
+		<property name="maker" value="Tefal"/>
+		<property name="productName" value="Minicompact"/>
+	</bean>
+	<bean id="ha2" class="self4.HomeAppliance">
+		<property name="maker" value="Tefal"/>
+		<property name="productName" value="Tajine"/>
+	</bean>
+	<bean id="ha3" class="self4.HomeAppliance">
+		<property name="maker" value="Tefal"/>
+		<property name="productName" value="Filtra One"/>
+	</bean>
+	
+	<bean id="book1" class="self4.Book">
+		<property name="title" value="When Breathe Becomes Air"/>
+		<property name="writer" value="Paul Kalanithi"/>
+	</bean>
+	<bean id="book2" class="self4.Book">
+		<property name="title" value="A Brief History of Humankind"/>
+		<property name="writer" value="Yuval Noah Harari"/>
+	</bean>
+	<bean id="book3" class="self4.Book">
+		<property name="title" value="Manual for Living"/>
+		<property name="writer" value="Epictetus"/>
+	</bean>
+	
+	<bean id="hotel" class="self4.Hotel">
+		<property name="hotelName" value="Constance Le Prince Maurice"/>
+		<property name="cost" value="100000"/>
+	</bean>
+	
+	<bean id="dorm" class="self4.Dormitory">
+		<property name="schoolName" value="Archbishop Ryan High School"/>
+		<property name="library">
+			<list>
+				<ref bean="book1"/>
+				<ref bean="book2"/>
+				<ref bean="book3"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="house" class="self4.House">
+		<constructor-arg name="hp">
+			<map>
+				<entry key="ha1" value-ref="ha1"/>
+				<entry key="ha2" value-ref="ha2"/>
+				<entry key="ha3" value-ref="ha3"/>
+			</map>
+		</constructor-arg>
+		<property name="address" value="Pasadena, Colorado"></property>
+	</bean>
+
+</beans>
