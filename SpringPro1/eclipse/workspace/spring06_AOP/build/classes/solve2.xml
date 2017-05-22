@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+	<!-- 1. member, product, advice라는 이름으로 Bean 등록 -->
+	<bean id="member" class="solve2.src.MemberServiceImpl"/>
+	<bean id="product" class="solve2.src.ProductServiceImpl"/>
+	<bean id="advice" class="solve2.src.ServiceAdvice"/>
+	
+	<!-- 2. AOP config 정보를 등록 -->
+	<aop:config>
+		<aop:aspect id="LoggingAdvice" ref="advice">
+			<aop:pointcut expression="within(solve2..*)" id="aroundPC"/>
+			<aop:around method="logWeaving" pointcut-ref="aroundPC"/>
+		</aop:aspect>
+	</aop:config>
+	
+</beans>
