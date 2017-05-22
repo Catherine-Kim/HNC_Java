@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<context:annotation-config></context:annotation-config>
+
+	<bean id="message" class="sample2.MessageBeanImpl">
+		<constructor-arg name="name" value="Catherine" />
+		<property name="greeting" value="Have a great day"/>
+		<!-- <property name="outputter" ref="outputter"/> -->
+	</bean>
+
+	<bean id="outputter" class="sample2.FileOutputter">
+		<constructor-arg name="filePath" value="src/sample2/output.txt" />
+	</bean>
+</beans>
