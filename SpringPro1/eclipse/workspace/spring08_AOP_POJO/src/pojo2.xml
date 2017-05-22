@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+	
+	<bean id="timeAdvice" class="kosta.aop.pojo2.TimeAdvice"/>
+	<bean id="dataSource" class="java.lang.String">
+		<constructor-arg value="HiHi"></constructor-arg>
+	</bean>
+	<bean id="target" class="kosta.aop.pojo2.MemberDAOImpl"/>
+	<bean id="afterAdvice" class="kosta.aop.pojo2.AfterReturningAdvice"/>
+	
+	<aop:config>
+		<aop:aspect id="timeAdvice" ref="timeAdvice">
+			<aop:pointcut expression="execution(* kosta.aop..re*())" id="regPointcut"/>
+			<aop:around method="time" pointcut-ref="regPointcut"/>
+		</aop:aspect>
+		<aop:aspect id="afterAspect" ref="afterAdvice">
+			<aop:pointcut expression="execution(* kosta.aop.pojo2.MemberDAO*.fi*(..))" id="afterPointcut"/>
+			<aop:after-returning method="afterMethod" pointcut-ref="afterPointcut" returning="ret"/>
+		</aop:aspect>
+	</aop:config>
+	
+</beans>
