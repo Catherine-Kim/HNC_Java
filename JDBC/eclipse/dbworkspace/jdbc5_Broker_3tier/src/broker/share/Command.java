@@ -44,6 +44,4 @@ public class Command implements Serializable{
 	public void setResults(Result results) {
 		this.results = results;
 	}
-	
-	
 }

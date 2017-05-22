@@ -95,7 +95,7 @@ public class JuryThread extends Thread{
 				float price;
 				try{
 					price = db.getStcokPrice(args[0]);
-					r.add(price);				// 원래는 객체로 넣어야 되는데 요즘은 호환이 됨
+					r.add(price);		// 원래는 객체로 넣어야 되는데 요즘은 호환이 됨
 					r.setStatus(0);
 				}catch(RecordNotFoundException e){
 					r.setStatus(-1);

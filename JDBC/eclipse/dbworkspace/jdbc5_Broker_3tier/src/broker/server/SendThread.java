@@ -26,7 +26,8 @@ public class SendThread extends Thread {
         
 		} catch (IOException e) { 
         
-			System.err.println("Error in SendThread creating Input or Output Stream" + e);
+			System.err.println("Error in SendThread creating Input or Output Stream" 
+																				+ e);
             success = false;
         
 		}

@@ -297,7 +297,7 @@ public class Broker implements ActionListener, ItemListener, Runnable {
 
 	/**
 	 * <PRE>
-	 * 1)인자값으로 입력된 Vector타입의 portfolio 정보를 폼 리스트중 Stock Portfolio에 뿌려준다.
+	 * 1)인자값으로 입력된 Vector타입의 portfolio 정보를 폼 리스트중 Stock Portfolio에 뿌림
 	 * </PRE>
 	 */
 	public void showList(Vector portfolio, List list) {
@@ -313,7 +313,8 @@ public class Broker implements ActionListener, ItemListener, Runnable {
 	/**
 	 * <PRE>
 	 * 1)customer List에서 선택된 항목중에서 ssn을 Token한다
-	 * 2)잘라진 ssn으로 DB의 getCustomer()를 이용. table에서 ssn에 해당하는 나머지 정보를 가져온다
+	 * 2)잘라진 ssn으로 DB의 getCustomer()를 이용. table에서 ssn에 해당하는 나머지 정보를 
+	 *   가져온다
 	 * 3)가져온 정보를 ssn,name,address TextField와 port LIst에 뿌린다.
 	 * </PRE>
 	 */
@@ -340,7 +341,8 @@ public class Broker implements ActionListener, ItemListener, Runnable {
 
 	/**
 	 * <PRE>
-	 * 1)ssn, symbol, quantity 정보를 알아온다 --> ssnTf, buyTf, sellTf의 텍스트박스에 입력된 값
+	 * 1)ssn, symbol, quantity 정보를 알아온다 --> ssnTf, buyTf, sellTf의 텍스트박스에 
+	 *   입력된 값
 	 * 2)각각의 값들을 인자로 DB의 buyShares()를 이용. 
 	 * 3)폼의 Stock Portfolio에 주식의 정보와 수량이 뿌려지게 한다.
 	 * </PRE>
@@ -361,7 +363,8 @@ public class Broker implements ActionListener, ItemListener, Runnable {
 
 	/**
 	 * <PRE>
-	 * 1)ssn, symbol, quantity 정보를 알아온다 --> ssnTf, buyTf, sellTf의 텍스트박스에 입력된 값
+	 * 1)ssn, symbol, quantity 정보를 알아온다 --> ssnTf, buyTf, sellTf의 텍스트박스에 
+	 * 	  입력된 값
 	 * 2)각각의 값들을 인자로 DB의 sellShares()를 이용. 
 	 * 3)폼의 Stock Portfolio에 주식의 정보와 수량이 뿌려지게 한다.
 	 * </PRE>
@@ -445,7 +448,8 @@ public class Broker implements ActionListener, ItemListener, Runnable {
 			ArrayList<CustomerRec> list = db.getAllCustomers();
 			showCustList(list, custList);
 		} catch (Exception e) {
-			System.out.println("삭제하려는 고객이 없습니다. Broker.deleteCustomer() " + e);
+			System.out.println("삭제하려는 고객이 없습니다. Broker.deleteCustomer() "
+								+ e);
 		}
 	}
 
@@ -469,8 +473,9 @@ public class Broker implements ActionListener, ItemListener, Runnable {
 	}
 
 	/**
-	 * portList에 선택된 내용을 buy, sell TextField에 뿌려준다. 1)port List에서 선택된 항목을
-	 * Token한다.<BR>
+	 * portList에 선택된 내용을 buy, sell TextField에 뿌려준다. 1)port List에서 선택된 
+	 * 항목을 Token한다.
+	 <BR>
 	 * 2)symbol,quantity를 해당 textfield에 setting한다<BR>
 	 */
 	public void showPortfolio() {

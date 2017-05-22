@@ -74,7 +74,8 @@ public class TickerTape extends Canvas	implements Runnable {
 		
 		
 		if (tickerStr == null) {
-			tickerStr = "Data connection to ticker tape host is down....Attempting reconnection....";
+			tickerStr = "Data connection to ticker tape host is down....Attempting"
+																+ " reconnection....";
 			System.err.println ("Ticker Reader readData failed.");
 		}
 		return (tickerStr);

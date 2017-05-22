@@ -34,11 +34,13 @@ public class StreamingData implements Runnable {
         } catch (IOException e) {
 
             System.err.println(e.toString());
-            System.err.println("Unable to create Server Socket," + "trying alternate port " + alternatePort);
+            System.err.println("Unable to create Server Socket," 
+            							+ "trying alternate port " + alternatePort);
         
 		} 
 
-        System.out.println("Notify all clients that the current Server Port"  + " is " + listenPort );
+        System.out.println("Notify all clients that the current Server Port"  
+        													+ " is " + listenPort );
 
     } 
 

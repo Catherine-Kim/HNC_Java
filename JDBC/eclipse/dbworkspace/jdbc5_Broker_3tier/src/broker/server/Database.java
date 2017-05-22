@@ -34,8 +34,8 @@ public class Database {
 	 
 	 //////// 공통적인 로직 /////////////////////
 	 public Connection getConnect() throws SQLException{
-		Connection conn = 
-				DriverManager.getConnection(DBServerInfo.URL, DBServerInfo.USER, DBServerInfo.PASS);
+		Connection conn = DriverManager.getConnection(DBServerInfo.URL, 
+												DBServerInfo.USER, DBServerInfo.PASS);
 		System.out.println("디비 연결 성공...getConnect()...");
 		 return conn;
 	 }
@@ -44,7 +44,8 @@ public class Database {
 		 if(ps != null) ps.close();
 		 if(conn != null) conn.close();
 	 }
-	 public void closeAll(ResultSet rs,PreparedStatement ps, Connection conn)throws SQLException{
+	 public void closeAll(ResultSet rs,PreparedStatement ps, Connection conn)
+			 													throws SQLException{
 		 if(rs != null) rs.close();
 			closeAll(ps, conn);
 	 }
@@ -59,7 +60,8 @@ public class Database {
 		return rs.next();
 	 }
 	 
-	 public void addCustomer(CustomerRec cust)throws SQLException, DuplicateSSNException{
+	 public void addCustomer(CustomerRec cust)throws SQLException, 
+	 															DuplicateSSNException{
 		Connection conn = null;
 		PreparedStatement ps = null;
 		try{
@@ -70,16 +72,19 @@ public class Database {
 				ps.setString(1, cust.getSsn());
 				ps.setString(2, cust.getName());
 				ps.setString(3, cust.getAddress());
-				System.out.println(ps.executeUpdate() + " row inserted into customer table.");
+				System.out.println(ps.executeUpdate() + " row inserted into customer "
+																		+ "table.");
 			}else{
-				throw new DuplicateSSNException(cust.getName() + " 님은 이미 가입된 고객입니다.");
+				throw new DuplicateSSNException(cust.getName() + " 님은 이미 가입된 "
+																	+ "고객입니다.");
 			}
 		}finally{
 			closeAll(ps, conn);
 		}		 
 	 }
 	 
-	 public void deleteCustomer(String ssn)throws SQLException,RecordNotFoundException{
+	 public void deleteCustomer(String ssn)throws SQLException,
+	 														RecordNotFoundException{
 		 Connection conn = null;
 		 PreparedStatement ps = null;		 
 		 try{
@@ -88,7 +93,8 @@ public class Database {
 				 String sql = "delete from customer where ssn = ?";
 				 ps = conn.prepareStatement(sql);
 				 ps.setString(1, ssn);
-				 System.out.println(ps.executeUpdate() + " row deleted from customer table.");
+				 System.out.println(ps.executeUpdate() + " row deleted from customer "
+				 														+ "table.");
 			 }else{
 				 throw new RecordNotFoundException();
 			 }
@@ -97,18 +103,21 @@ public class Database {
 		 }
 	 }
 	 
-	 public void updateCustomer(CustomerRec cust)throws SQLException, RecordNotFoundException{
+	 public void updateCustomer(CustomerRec cust)throws SQLException, 
+	 														RecordNotFoundException{
 		 Connection conn = null;
 		 PreparedStatement ps = null;		
 		 try{
 			 conn = getConnect();
 			 if(isExist(conn, cust.getSsn())){
-				 String sql = "update customer set cust_name = ?, address = ? where ssn = ?";
+				 String sql = "update customer set cust_name = ?, address = ? where "
+				 														+ "ssn = ?";
 				 ps = conn.prepareStatement(sql);
 				 ps.setString(1, cust.getName());
 				 ps.setString(2, cust.getAddress());
 				 ps.setString(3, cust.getSsn());
-				 System.out.println(ps.executeUpdate() + " row updated in customer table.");
+				 System.out.println(ps.executeUpdate() + " row updated in customer "
+				 														+ "table.");
 			 }else{
 				 throw new RecordNotFoundException();
 			 }
@@ -132,7 +141,8 @@ public class Database {
 			 ps.setString(1, ssn);
 			 rs = ps.executeQuery();
 			 while(rs.next()){
-				 v.add(new SharesRec(rs.getString("ssn"), rs.getString("symbol"), rs.getInt("quantity")));
+				 v.add(new SharesRec(rs.getString("ssn"), rs.getString("symbol"),
+						 									rs.getInt("quantity")));
 			 }
 		 }finally{
 			 closeAll(rs, ps, conn);
@@ -154,7 +164,8 @@ public class Database {
 			ps.setString(1, ssn);
 			rs = ps.executeQuery();
 			if(rs.next()){
-				cust = new CustomerRec(ssn, rs.getString("cust_name"), rs.getString("address"));
+				cust = new CustomerRec(ssn, rs.getString("cust_name"), 
+															rs.getString("address"));
 			}
 			cust.setPortfolio(getPortfolio(ssn));
 		 }finally{
@@ -173,7 +184,9 @@ public class Database {
 			 ps = conn.prepareStatement(sql);
 			 rs = ps.executeQuery();
 			 while(rs.next()){
-				 list.add(new CustomerRec(rs.getString("ssn"), rs.getString("cust_name"), rs.getString("address"), getPortfolio(rs.getString("ssn"))));
+				 list.add(new CustomerRec(rs.getString("ssn"), 
+						 	rs.getString("cust_name"), rs.getString("address"), 
+						 	getPortfolio(rs.getString("ssn"))));
 			 }
 		 }finally{
 			 closeAll(rs, ps, conn);
@@ -200,7 +213,8 @@ public class Database {
 		 return list;
 	 }
 	 
-	 public float getStcokPrice(String symbol)throws SQLException,RecordNotFoundException{
+	 public float getStcokPrice(String symbol)throws SQLException,
+	 														RecordNotFoundException{
 		 Connection conn = null;
 		 PreparedStatement ps = null;	
 		 ResultSet rs = null;

@@ -17,7 +17,8 @@ public class ProtocolHandler extends Thread{
 	public ProtocolHandler(String host){
 		try {
 			server = new ServerSocket(MIDDLE_PORT);
-			System.out.println("[SUCCESS] Start ProtocolHandler - port number : " + MIDDLE_PORT);
+			System.out.println("[SUCCESS] Start ProtocolHandler - port number : " 
+																		+ MIDDLE_PORT);
 		} catch (IOException e) {
 			System.out.println("[FAIL] ProtocolHandler");
 		}
@@ -36,7 +37,8 @@ public class ProtocolHandler extends Thread{
 			// waiting
 			try {
 				s = server.accept();
-				jury = new JuryThread(s, db); 	// Thread는 Database를 Hasing해야 Database의 메소드를 쓸 수 있게 됨
+				jury = new JuryThread(s, db);
+				// Thread는 Database를 Hasing해야 Database의 메소드를 쓸 수 있게 됨
 				jury.start();
 			} catch (IOException e) {
 				e.printStackTrace();
