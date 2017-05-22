@@ -1,0 +1,28 @@
+시퀀스
+- table 내에서 유일한 수를 자동으로 증가시키는 역할
+  *유일 *자동으로 증가
+  --> table에서 기본키(PK)로 사용된다.
+- 순차적으로 자동 증가하는 오라클 서버 객체
+
+시퀀스 사용방법
+CREATE SEQUENCE sequence_name;  --> 필수적으로 사용되어야 하는 부분
+
+옵션
+[START WITH n] : n부터 시작
+[INCREMENT BY n] : n씩 증가
+[MAXVALUE n] : n까지만 증가
+[NOMAXVALUE] : 최대치를 지정해두지 않았음
+[MINIVALUE n] : n이 최소값
+[NOMINVALUE] : 최소값을 지정해두지 않았음
+[CYCLE] : 최대값 도달 시 순환
+[NOCYCLE] : 순환 안 함
+
+DROP SEQUENCE sequence_name;
+sequence_name이라는 이름의 sequence 삭제
+
+dual : Oracle에서 제공하는 dummy table
+- 하나의 varchar2 타입의 컬럼만으로 이루어진 테스트용 table
+- 현재 sequence같은 거 뽑아볼 때, 기존의 table에서 뽑으면 table 내의 데이터만큼(row 수 만큼) 결과가 나오는데, 이럴 때 dummy table을 쓰는 게 좋음
+
+dual 테이블의 용도
+ex. sysdate : 현재 날짜를 리턴해주는 Oracle의 특수키
