@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="kosta" class="kosta.edu.model.KostaDAOImpl">
+		<property name="st">
+			<ref bean="student"/>
+		</property>
+		<property name="dataSource" value="It's datasource"/>
+		<property name="location" value="LA, California"/>
+	</bean>
+	
+	<bean id="student" class="kosta.edu.model.Student">
+		<constructor-arg name="studentId" value="01" />
+		<constructor-arg name="name" value="Woojeong Kim" />
+	</bean>
+
+</beans>

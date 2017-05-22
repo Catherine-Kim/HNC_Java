@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="msg3" class="kosta.edu.model.KostaServiceImpl">
+		<constructor-arg name="name" ref="string" />
+		<property name="num" value="32122616" />
+		<property name="birthDate" value="19940610"/>
+	</bean>
+	
+	<bean id="string" class="java.lang.String">
+		<constructor-arg value="Jimin Park" />
+	</bean>
+
+</beans>
