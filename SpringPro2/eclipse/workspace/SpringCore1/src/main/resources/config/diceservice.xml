@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Dice -->
+	<bean id="diceA" class="spring.service.dice.impl.DiceAImpl"/>
+	<bean id="diceB" class="spring.service.dice.impl.DiceBImpl"/>
+	<bean id="diceC" class="spring.service.dice.impl.DiceCImpl"/>
+	
+	<!-- Player01 -->
+	<bean id="player01" class="spring.service.dice.play.Player02">
+		<property name="dice" ref="diceA"/>
+	</bean>
+	
+	<!-- Player02 -->
+	<bean id="player02" class="spring.service.dice.play.Player02" p:dice-ref="diceB"/>
+	
+	<!-- Player03 -->
+	<bean id="player03" class="spring.service.dice.play.Player02">
+		<constructor-arg>
+			<ref bean="diceC"/>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Player04 -->
+	<bean id="player04" class="spring.service.dice.play.Player02">
+		<constructor-arg ref="diceC"/>
+	</bean>
+</beans>
