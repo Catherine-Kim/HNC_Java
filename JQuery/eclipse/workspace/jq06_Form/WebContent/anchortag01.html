@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		// 1. <a> 태그의 href 속성 값에  youtube라는 값이 포함되어 있는 사이트를 클릭하면 
+		// confirm 창 거쳐서 이동
+		$('a[href*=youtube]').click(function(){
+			return confirm($(this).html() + '로 이동하시겠읍니까?');
+		});
+	});
+</script>
+<body>
+	<a href="https://www.youtube.com/watch?v=RgKAFK5djSk">See You Again</a>
+	<a href="https://www.daum.net">DAUM</a>
+	<a href="https://www.naver.com">NAVER</a>
+	<a href="https://www.google.com">GOOGLE</a>
+</body>
+</html>

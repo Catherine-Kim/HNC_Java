@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		$('#frm').submit(function(){
+			// 1. ID, Password가 입력이 안되면 안되게 할거임
+			if($('#userId').val() == ''){
+				alert('ID를 입력하시지');
+				$('#userId').focus();
+				return false;
+			} // if
+			
+			if($('#userPass').val() == ''){
+				alert('password를 입력하시지');
+				$('#userPass').focus();
+				return false;
+			} // if
+			
+			// 2. 선택한 취미를 hobbyV라는 변수에 할당 - each()를 사용
+			var hobbyV = $('input[name=hobby]:checked');
+			// alert(hobbyV.length);	--> 배열이 제대로 만들어졌는지 확인하는 방법
+			if(hobbyV.length == 0){
+				alert('취미 하나 이상 선택하시지');
+				return false;
+			}else{
+				var text = '';
+				$.each(hobbyV, function(index){
+					text += $(this).val() + ' ';
+				});	// each()
+				alert(text);
+				return confirm('선택하신 ' + hobbyV.length + '개의 취미를 전송하겠니?');
+			} // if - else
+		}); // submit()
+	});
+</script>
+<body>
+	<h2>로그인 정보 입력</h2><p>
+	<form action="checkbox07.jsp" id="frm">
+		ID : <input type="text" name="userId" id="userId"><p>
+		PASSWORD : <input type="password" name="userPass" id="userPass"><p>
+		<b>취미를 골라보렴</b><p>
+		<input type="checkbox" name="hobby" value="Reading">Reading<br/>
+		<input type="checkbox" name="hobby" value="Playing Overwatch">Playing Overwatch<br/>
+		<input type="checkbox" name="hobby" value="Drinking">Drinking<br/>
+		<input type="checkbox" name="hobby" value="Drawing">Drawing<br/>
+		<input type="submit" value="SEND">
+	</form>
+</body>
+</html>

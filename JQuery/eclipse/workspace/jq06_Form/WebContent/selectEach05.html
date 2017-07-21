@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		$('#addOptionBtn').one('click', function(){
+			var arr = ['김근호', '조원민', '김우정', '이영욱'];
+			
+			// 1. arr 안의 값들을 select option의 값으로 추가함
+			$(arr).each(function(index, item){
+				var opt = '<option value=' + item +'>' + item + '</option>';
+				$('#friend').append(opt);
+			});
+		});	// one()
+		
+		$('#deleteOptionBtn').click(function(){
+			$('#friend>option').remove();
+		});	// click()
+	});
+</script>
+<body>
+	<input type="button" value="옵션 생성" id="addOptionBtn">
+	<input type="button" value="옵션 삭제" id="deleteOptionBtn">
+	<select id="friend"></select>
+</body>
+</html>

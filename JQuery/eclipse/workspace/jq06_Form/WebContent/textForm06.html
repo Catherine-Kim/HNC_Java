@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		// 1. form의 값을 action 페이지로 전송
+		$('#memberFrm').submit(function(){	// form 값 전송하는 함수(submit 눌렀을 때 실행)
+			// 1) 각각의 input 에 입력된 값 받아오기
+			var id = $('#userId').val();
+			var name = $('input[name=userName]').val();
+			var address = $(':text[name=userAddr]').val();
+			
+			// 2) confirm 창으로 연결
+			return confirm(name + ' 님의 정보를 전송하시겠읍니까?');
+		});
+	});
+</script>
+<body>
+	<h2 align="center">form으로 전송한 값을 jsp 파일이 받아서 출력하기</h2><p>
+	<form action="textForm06.jsp" id="memberFrm">
+		ID : <input type="text" name="userId" id="userId"><p>
+		NAME : <input type="text" name="userName" id="userName"><p>
+		ADDRESS : <input type="text" name="userAddr" id="userAddr"><p>
+		<input type="submit" value="Sending">
+	</form>
+</body>
+</html>

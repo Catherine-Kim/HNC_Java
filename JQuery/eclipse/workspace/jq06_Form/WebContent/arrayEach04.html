@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		// 1. 버튼을 클릭하면 배열 선언 및 생성
+		$('#arrayBtn').click(function(){
+			var array = [];		// 배열 선언하는 방법
+			array.push('김근호');
+			array.push('조원민');
+			array.push('김우정');
+			array.push('이영욱');
+			
+			// 2. for문 이용해서 출력
+			/* for(i = 0; i < array.length; i++)
+				alert(array[i]); */
+			
+			// 3. jQuery 함수 each()를 써서 출력
+			/* $(array).each(function(index){
+				alert(index + 1 + '.' + array[index]);
+			}); // each() */
+			
+			// 3. each()를 쓰는 또다른 바업
+			/* $.each(array, function(index){
+				alert(index + 1 + '.' + array[index]);
+			}); */
+			
+			// 4. 
+			var str = '';
+			$.each(array, function(index){
+				str += index + 1 + '.' + array[index] + ' ';
+			});
+			
+			alert(str);
+		});
+	});
+</script>
+<body>
+	<input type="button" id = "arrayBtn" value="array each() test">
+</body>
+</html>

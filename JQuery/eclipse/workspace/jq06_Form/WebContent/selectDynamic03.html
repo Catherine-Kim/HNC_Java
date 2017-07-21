@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		// 1. 버튼을 클릭하면
+		$('#createSel').change(function(){
+			var nth = $('#nth').html();
+			var item = $('#createSel>option:selected').val();
+			$('#nth').html(nth + '</br>' + item + '</br>');
+		});
+	});
+</script>
+<body>
+	<input type="button" value="버튼 클릭 시 동적으로 문자열 생성" id="createBtn">
+	<select id="createSel">
+		<option>154th</option>
+		<option>155th</option>
+		<option>156th</option>
+		<option>157th</option>
+		<option>158th</option>
+	</select>
+	<div id="nth"></div>
+</body>
+</html>
