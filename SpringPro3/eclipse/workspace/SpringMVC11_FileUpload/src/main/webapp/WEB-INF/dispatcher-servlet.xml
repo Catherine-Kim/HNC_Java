@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- InternalResourceVeiwResolver -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"/>
+		<property name="suffix" value=".jsp"/>
+		<property name="order" value="1"/>
+	</bean>
+	
+	<!-- BeanNamerViewResolver -->
+	<bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"/>
+	</bean>
+	
+	<!-- CommonsMultipartResolver -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8"/>
+		<property name="maxUploadSize" value="-1"/>
+	</bean>
+	
+	<!-- MethodNameResolver -->
+	<bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName" value="command"/>
+	</bean>
+	
+	<!-- UploadController -->
+	<bean name="/upload.do" class="controller.UploadController">
+		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="path">
+			<value>C:\\HNC\\KWJ\\SpringPro3\\eclipse\\workspace\\SpringMVC11_FileUpload\\src\\main\\webapp\\upload\\</value>
+		</property>
+	</bean>
+	
+	<!-- DownloadView -->
+	<bean name="downloadView" class="util.DownloadView"/>
+
+</beans>
