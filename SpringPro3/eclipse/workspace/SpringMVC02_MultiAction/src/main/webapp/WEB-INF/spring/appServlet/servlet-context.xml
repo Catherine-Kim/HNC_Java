@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- InternalResourceViewResolver -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- MockDao -->
+	<bean id="mockDao" class="com.spring.model.MockDao"/>
+	
+	<!-- ParameterMethodNameResolver -->
+	<bean id="mnResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName" value="mode"/>
+	</bean>
+	
+	<!-- TestMultiController -->
+	<bean name="/test.do" class="com.spring.mvc.TestMultiController">
+		<property name="methodNameResolver" ref="mnResolver"/>
+		<property name="mockDao" ref="mockDao"/>
+	</bean>
+	
+	<!-- CarController -->
+	<bean name="/car.do" class="com.spring.mvc.CarController">
+		<property name="mockDao" ref="mockDao"/>
+	</bean>
+	
+</beans>
