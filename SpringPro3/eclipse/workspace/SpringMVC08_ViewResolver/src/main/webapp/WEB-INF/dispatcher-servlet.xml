@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 라이브러리 Bean 등록 :: ViewResolver -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/response/"/>
+		<property name="suffix" value=".jsp"/>
+		<property name="order" value="1"/>
+	</bean>
+	
+	<!-- BeanNameViewResolver -->
+	<bean id="beanNameResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"/>
+	</bean>
+	
+	<!-- JstlView -->
+	<bean id="board_result" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="board/result/find_ok.jsp"/>
+	</bean>
+	
+	<bean id="product_result" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="product/result/find_ok.jsp"/>
+	</bean>
+
+	<!-- 사용자 정의 Bean 등록 :: Controller-->
+	<bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName" value="command"/>
+	</bean>
+	
+	<bean id="testController" class="controller.TestController">
+		<property name="methodNameResolver" ref="methodNameResolver"/>
+	</bean>
+	
+</beans>
