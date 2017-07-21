@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		$('#frm').submit(function(){
+			// form에 입력된 값들을 한꺼번에 쿼리스트림으로 전달
+			alert($(this).serialize());
+			return false;
+		}); // submit()
+	}); // function()
+</script>
+<body>
+<form action="serializeServlet" id="frm">
+	NAME : <input type="text" name="name">
+	<input type="hidden" name="command" value="register">
+	
+	<select name="tool">
+		<option value="eclipse">eclipse</option>
+		<option value="ERWin">ERWin</option>
+		<option value="StarUML">StarUML</option>
+	</select><p>
+	
+	<input type="checkbox" name="pr" value="jQuery">jQuery&nbsp;
+	<input type="checkbox" name="pr" value="ajax">ajax&nbsp;
+	<input type="checkbox" name="pr" value="spring">spring&nbsp;
+	<input type="checkbox" name="pr" value="java">java<p>
+	<input type="submit" value="Form Send">
+</form>
+</body>
+</html>

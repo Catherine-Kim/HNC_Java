@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		$('#ajaxBtn2').click(function(){
+			$.ajax({
+				type: "get",						// 메소드는 GET 방식
+				url: "HelloServletAjax2",			// HelloServletAjax2로 연결
+				data: "id=jquery&&password=1234", 	// 값 두 개 넘김
+				
+				success: function(data){	// 자바스크립트의 callback()에 해당되는 부분 - 응답
+					// 응답할 때 넘어온 데이터를 인자로 받음
+					alert(data);	// 넘어온 데이터 출력해봄
+				}, // success
+				
+				error: function(){ 	// 에러가 났을 때 실행되는 함수
+									// 에러난 상태기 때문에 data는 받을 필요 없음
+					alert('응답 시간이 지연됨..');
+				}, // error
+				
+				timeout: 1000	// 응답시간이 1초 이상 지연되면 에러로 간주하겠다는 의미
+				
+			}); // ajax()
+		}) // click()
+	});
+</script>
+<body>
+	<input type="button" id="ajaxBtn2" value="ajaxValue2">
+</body>
+</html>

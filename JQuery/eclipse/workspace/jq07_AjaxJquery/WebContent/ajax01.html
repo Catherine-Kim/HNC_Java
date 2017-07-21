@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		$('#ajaxBtn').click(function(){
+			// jQuery로 AJAX 기술 사용
+			$.ajax({		// javascript의 startRequest()와 같은 부분 - 요청이 이루어짐
+				type: "post",			// method 방식
+				url: "HelloAjaxServlet", // 연결되는 페이지
+				data: "name=jqueryAjax" // 넘기려는 값을 map 방식으로 지정
+			}); // ajax()
+			
+		}); // click();		
+	});
+</script>
+<body>
+	<input type="button" id="ajaxBtn" value="ajaxValue">
+</body>
+</html>

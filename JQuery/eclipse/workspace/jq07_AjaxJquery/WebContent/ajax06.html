@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function() {
+		$('#regBtn').click(function(){
+			$.ajax({
+				type: "post",
+				url: "SerializeServlet",	// action과 동일하게 왜 써줘야할까?
+				data: $('#regFrm').serialize(),
+				// serialize() : map 방식으로 form에 입력된 모든 값을 하나로 만듦
+				
+				success: function(data){
+					$('#regView').html(data).css({
+						'background' : 'olive',
+						'color' : 'white'
+					});	// css()
+				} // success
+			}); // ajax()
+		}); // cilck()
+		
+		$('#id').keyup(function(){
+			// ID는 4 ~ 10 자리까지만 허용
+			var id = $(this).val();
+			if(id.length < 4 || id.length > 10){
+				$('#idView').html('ID는 4 ~ 10 자리임').css('color', 'red');
+			}else{
+				$.ajax({
+					type: "post",
+					url: "SerializeServlet",	
+					data: $('#idFrm').serialize(),
+					
+					success: function(data){
+						if(data == 'true')
+							$('#idView').html('있는 아이디임').css('color', 'blue');
+						else
+							$('#idView').html('존재하지 않는 아이디임').css('color', 'green');
+					} // success
+				}); // ajax()
+			} // if - else
+		}); // keyup()
+	}); // function()
+</script>
+<body>
+	<form action="SerializeServlet" id="regFrm">
+		<h2>Register Form</h2><p>
+		NAME : <input type="text" name="name" id="name"><p>
+		ADDRESS : <input type="text" name="addr" id="addr"><p>
+		<input type="hidden" name="command" value="register">
+		<input type="button" value="REGISTER" id="regBtn">
+		<hr>
+		<div id="regView"></div>
+	</form>
+	<hr>
+	<form action="SerializeServlet" id="idFrm">
+		<h2>Member ID Check</h2><p>
+		ID : <input type="text" name="id" id="id">
+		<span id="idView"></span>
+		<input type="hidden" name="command" value="idcheck">
+	</form>
+</body>
+</html>

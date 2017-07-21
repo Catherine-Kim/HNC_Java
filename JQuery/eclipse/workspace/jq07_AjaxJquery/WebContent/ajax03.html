@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		$('#friend').change(function(){
+			if($(this).val() == ""){		// 아무것도 고르지 않았을 경우 
+				alert('사람을 고르삼');
+				return;
+			}; // if
+
+			$.ajax({
+				type: "POST",
+				url: "AddressServlet",
+				data: "name="+$(this).val(),
+				
+				success: function(data){
+					$('#addressView').html(data);
+				} // success
+			}); // ajax()
+		}); // change
+	}); // function
+</script>
+<body>
+	<select id="friend">
+		<option value="">==== 2조 사람덜 ====</option>
+		<option value="득호">득호</option>
+		<option value="요섭">요섭</option>
+		<option value="태현">태현</option>
+		<option value="동근">동근</option>
+		<option value="서윤">서윤</option>
+		<option value="하람">하람</option>
+		<option value="우정">우정</option>
+	</select>
+	<span id="addressView"></span>
+</body>
+</html>

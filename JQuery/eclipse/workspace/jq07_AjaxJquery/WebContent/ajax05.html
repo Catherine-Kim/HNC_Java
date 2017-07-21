@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function() {
+		$('#jsonBtn').click(function() {
+			$.ajax({
+				type : "post",
+				url : "JsonServlet",
+				dataType : "json",
+
+				success : function(data) {
+					$('#jsonView').html(data.name + '/' + data.age + '/' + data.address).
+						css('background', 'olive');	
+				} // success
+			}) // ajax()
+		}); // click();
+	}); // function()
+</script>
+<body>
+	<input type="button" value="json-object" id="jsonBtn">
+	<span id="jsonView"></span>
+</body>
+</html>

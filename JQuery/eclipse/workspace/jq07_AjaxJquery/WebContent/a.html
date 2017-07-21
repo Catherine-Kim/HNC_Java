@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function() {
+		$('a').click(function() {
+			$.ajax({
+				type: "get", 			<-- method 요청 방식
+				url: "HelloServlet",	<-- 서버로 전달되는 페이지
+				data: "id=ajax",		<-- 요청 시 전달하는 데이터 - Map 방식
+				
+				dataType: "json",		<-- 응답 시 전달되는 값의 타입
+										<-- (필수조건은 아니지만 JSON 사용 시 대부분 써줌)
+										
+				// ********************* 여기까지가 요청 시 반드시 써야하는 부분(dataType 빼고)
+				
+				success: function(data){	<-- 응답 시 실행되는 함수(data는 전달받는 데이터)
+											<-- 자바스크립트의 callback() 부분
+				}// success				
+				// ********************* 여기까지가 응답 시 반드시 써야하는 부분
+			}); // ajax()
+		}); // click()
+	}); // function
+</script>
+<body>
+
+</body>
+</html>
