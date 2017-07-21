@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- BeanNameViewResolver -->
+	<bean id="beanNameResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"/>
+	</bean>
+	
+	<!-- JstlView -->
+	<bean id="insert_ok" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="member/register/insertOK.jsp"/>
+	</bean>
+	
+	<!-- MethodNameResolver -->
+	<bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName" value="command"/>
+	</bean>
+
+	<!-- TestController -->
+	<bean name="/test.do" class="controller.TestController">
+		<property name="methodNameResolver" ref="methodNameResolver"/>
+	</bean>
+	
+	<!-- JsonView 등록 -->
+	<bean id="JsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>
+
+</beans>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var xhr;
+	
+	function startRequest(){
+		// XMLHttpRequest 객체 생성	- readyState : 0
+		xhr = new XMLHttpRequest();
+		
+		// 응답을 받을 메소드 이름 등록  - readyState : 1
+		xhr.onreadystatechange = callback;
+		
+		// 메소드 방식, 가야할 곳 지정 - readyState : 1
+		xhr.open("get", "test.do?command=searchId&&id=ajax", true);
+		
+		// 보냄 - readyState : 1
+		xhr.send(null);	
+	}
+	
+	function callback(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+				// 객체 받긔
+				var jsonData = JSON.parse(xhr.responseText);
+				//alert(jsonData.person.name+" " + jsonData.person.address);
+				document.getElementById("resultSpan").innerHTML=
+						"<font color=blue>"+ jsonData.person.name+" " + 
+							jsonData.person.address +"</font>"
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<h2 align="center">비동기 통신 using JSON</h2><p>
+	<a href="test.do?command=insert">동기 통신</a><p>
+	<input type="button" value="비동기 통신 연결" onclick="startRequest()">
+	<span id="resultSpan"></span>
+</body>
+</html>
