@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style type="text/css">
+	div {
+		position: relative; 
+		width: 70px;
+		height: 70px;
+		border: 2px solid olive;
+	}
+</style>
+<script type="text/javascript">
+	$(function(){
+		// div를 클릭하면
+		/* $('div').click(function(){
+			// 1. 해당 영역이 오른쪽으로 500만큼 천천히 이동
+			$(this).animate({left:'+500'}, 'slow');
+		}); */
+		
+		// 2. hover()를 이용해서 div가 왔다가 다시 돌아오도록 해보기
+		/* $('div').hover(function(){
+			$(this).animate({left:'+500'}, 'fast');
+		}, function(){
+			$(this).animate({left:'0'}, 'fast');
+		}); */
+		
+		// 3. div 태그를 클릭하면 할수록 몸집이 커지게 해보자 
+		$('div').click(function(){
+			$(this).animate({
+				width: '+=80',
+				height: '+=80'
+			}, 'fast');
+		});
+	});
+</script>
+<body>
+	<div></div><div></div>
+	<div></div><div></div>
+	<div></div><div></div>
+</body>
+</html>
