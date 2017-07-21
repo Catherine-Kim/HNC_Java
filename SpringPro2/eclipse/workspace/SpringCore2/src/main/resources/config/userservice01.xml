@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 사용자 정의 Bean :: setter 주입 :: 단순 property 값 - userId, age-->
+	<bean id="user01" class="spring.service.domain.User">
+		<property name="userId" value="01유저"/>
+		<property name="age" value="01"/>
+	</bean>
+
+	<!-- API Bean :: 생성자 주입 :: 단순 property 값 -->
+	<bean id="password" class="java.lang.String">
+		<constructor-arg value="7777"/>
+	</bean>
+	
+	<!-- 사용자 정의 Bean :: setter 주입:: 단순 property 값 - userId, age, password-->
+	<bean id="user02" class="spring.service.domain.User">
+		<property name="userId" value="02유저"/>
+		<property name="age" value="02"/>
+		<property name="password" value="password"/>
+	</bean>
+	
+	<!-- 사용자 정의 Bean :: DI가 없음(User에 기본생성자가 있는지를 확인하고 넣어야함 -->
+	<bean id="user03" class="spring.service.domain.User"/>
+	
+	<!-- 사용자 정의 Bean :: 생성자 주입 :: 단순 property 값(2개) -->
+	<bean id="user04" class="spring.service.domain.User">
+		<constructor-arg index="0" value="04"/>
+		<constructor-arg index="1" value="04유저"/>
+	</bean>
+	
+	<!-- 사용자 정의 Bean :: 생성자 주입 :: 단순 property 값(3개) -->
+	<bean id="user05" class="spring.service.domain.User">
+		<constructor-arg index="0" value="05"/>
+		<constructor-arg index="1" value="0505"/>
+		<constructor-arg index="2" value="05유저"/>
+	</bean>
+	
+</beans>

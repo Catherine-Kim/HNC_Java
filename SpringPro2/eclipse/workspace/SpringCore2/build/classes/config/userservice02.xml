@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 사용자 정의 Bean :: 생성자 주입 :: 단순 property 값(3개) - index 사용 -->
+	<bean id="user06" class="spring.service.domain.User">
+		<constructor-arg index="0" value="06"/>
+		<constructor-arg index="2" value="06유저"/>
+		<constructor-arg index="1" value="0606"/>
+	</bean>
+
+	<!-- 사용자 정의 Bean :: 생성자 주입 :: 단순 property 값(3개) - index, type 혼용 -->
+	<bean id="user07" class="spring.service.domain.User">
+		<constructor-arg type="int" value="06"/>
+		<constructor-arg index="2" value="06유저"/>
+		<constructor-arg index="1" ref="password"/>
+	</bean>
+	
+	<!-- properties 파일 가져오기 -->
+	<bean id="propertyConfigure" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="config/userservice02.properties"></property>
+	</bean>
+	
+	<bean id="user08" class="spring.service.domain.User">
+		<property name="age" value="${user.age}"/>
+		<property name="password" value="${user.password}"/>
+		<property name="userId" value="${user.userId}"/>
+	</bean>
+</beans>

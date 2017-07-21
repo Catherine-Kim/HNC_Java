@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- diceA, diceB, diceC라는 이름으로 Bean 등록 -->
+	<bean id="diceA" class="spring.service.dice.impl.DiceAImpl"/>
+	<bean id="diceB" class="spring.service.dice.impl.DiceBImpl"/>
+	<bean id="diceC" class="spring.service.dice.impl.DiceCImpl"/>
+	
+	<!-- multiPlayer01 이라는 이름으로 Bean 등록 -->
+	<!-- diceA, diceB, diceA, diceA 순으로 Bean 주입 - List -->
+	<!-- 순서가 있고, 중복을 허용하는지를 확인 -->
+	<bean id="multiPlayer01" class="spring.service.dice.play.MultiPlayer">
+		<property name="diceList">
+			<list>
+				<ref bean="diceA"/>
+				<ref bean="diceB"/>
+				<ref bean="diceC"/>
+				<ref bean="diceA"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- multiPlayer02 이라는 이름으로 Bean 등록 -->
+	<bean id="multiPlayer02" class="spring.service.dice.play.MultiPlayer">
+		<property name="diceArray">
+			<list>
+				<ref bean="diceA"/>
+				<ref bean="diceB"/>
+				<ref bean="diceC"/>
+				<ref bean="diceA"/>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- multiPlayer03 이라는 이름으로 Bean 등록 -->
+	<!-- currentDate에 명시적으로 null을 넣어보자 -->
+	<bean id="multiPlayer03" class="spring.service.dice.play.MultiPlayer">
+		<property name="currentDate">
+			<null/>
+		</property>
+		<property name="dice">
+			<bean class="spring.service.dice.impl.DiceAImpl"/>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- diceA, diceB, diceC라는 이름으로 Bean 등록 -->
+	<bean id="diceA" class="spring.service.dice.impl.DiceAImpl"/>
+	<bean id="diceB" class="spring.service.dice.impl.DiceBImpl"/>
+	<bean id="diceC" class="spring.service.dice.impl.DiceCImpl"/>
+	
+	<!-- multiPlayer04 Bean 생성 -->
+	<!-- diceA, diceB, diceC를 Set에 저장 :: diceA > diceB > diceC > diceA 순서 -->
+	<!-- 순서 유무, 중복 허용 여부 등을 확인 -->
+	<bean id="multiPlayer04" class="spring.service.dice.play.MultiPlayer">
+		<property name="diceSet">
+			<set>
+				<ref bean="diceA"/>
+				<ref bean="diceB"/>
+				<ref bean="diceC"/>
+				<ref bean="diceA"/>
+			</set>
+		</property>
+	</bean>
+	
+	<!-- multiPlayer05 Bean 생성 -->
+	<!-- diceA, diceB, diceC를 Map에 저장 :: diceA > diceB > diceC > diceA 순서 -->
+	<!-- 순서 유무, 중복 허용 여부 등을 확인 -->
+	<bean id="multiPlayer05" class="spring.service.dice.play.MultiPlayer">
+		<property name="diceMap">
+			<map>
+				<entry key="diceA" value-ref="diceA"/>
+				<entry key="diceB" value-ref="diceB"/>
+				<entry key="diceC" value-ref="diceC"/>
+				<entry key="diceA" value-ref="diceA"/>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- multiPlayer06 Bean 생성 -->
+	<!-- diceA, diceB, diceC를 Properties에 저장 :: diceA > diceB > diceC > diceA 순서 -->
+	<!-- 순서 유무, 중복 허용 여부 등을 확인 -->
+	<bean id="multiPlayer06" class="spring.service.dice.play.MultiPlayer">
+		<property name="diceProperties">
+			<props>
+				<prop key="diceA">diceA</prop>
+				<prop key="diceB">diceB</prop>
+				<prop key="diceC">diceC</prop>
+				<prop key="diceA">diceA</prop>
+			</props>
+		</property>
+	</bean>
+</beans>
