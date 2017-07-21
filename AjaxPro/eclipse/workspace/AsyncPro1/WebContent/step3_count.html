@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	var xhr;
+	
+	function startRequest(){
+		xhr = new XMLHttpRequest();
+		
+		xhr.onreadystatechange = callback;
+		// 원래는 xhr.onreadystatechange() = callback();
+		// 이처럼 쓰지 않는 이유는 여기서 당장 실행하지 않는다는 의미
+		
+		xhr.open("get", "GetCountServlet?id=ajax&&pass=123");
+		
+		xhr.send(null);
+	}
+	
+	function callback(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+				var text = xhr.responseText.trim();
+				//alert(text);
+				document.getElementById("resultView").innerHTML = text;
+			}
+		}
+	}
+</script>
+
+</head>
+<body>
+
+<h2 align="center">GET 방식으로 Ajax 카운팅하기</h2><p>
+<input type="button" value="show counting" onclick="startRequest()">
+<div id="resultView"></div>
+</body>
+</html>
