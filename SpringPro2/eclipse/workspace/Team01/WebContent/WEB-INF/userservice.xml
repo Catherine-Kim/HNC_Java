@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- DataSource -->
+	<util:properties id="jdbc" location="classpath:config/jdbc.properties" />
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="#{jdbc['jdbc.driverClassName']}" />
+		<property name="url" value="#{jdbc['jdbc.url']}" />
+		<property name="username" value="#{jdbc['jdbc.username']}" />
+		<property name="password" value="#{jdbc['jdbc.password']}" />
+		<property name="maxActive" value="#{jdbc['jdbc.maxActive']}" />
+		<property name="initialSize" value="#{jdbc['jdbc.initialSize']}" />
+	</bean>
+
+	<!-- sqlMap을 Bean으로 등록 : 객체의 값으로 외부 자원의 값이 바인딩되는 것 -->
+	<util:properties id="sql"
+		location="classpath:config/spring-userservice-sql.properties" />
+	<bean id="sqlService" class="persistence.SqlServiceImpl">
+		<property name="sqlMap" ref="sql" />
+	</bean>
+
+	<!-- UserDao -->
+	<bean id="userDao" class="persistence.UserDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="sqlService" ref="sqlService" />
+	</bean>
+
+	<!-- UserService -->
+	<bean id="userService" class="service.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
+	</bean>
+
+	<!-- GetUserController -->
+	<bean id="/getUser.do" class="presentation.GetUserController">
+		<property name="userService" ref="userService"></property>
+	</bean>
+
+	<!-- RemoveController -->
+	<bean name="/remove.do" class="presentation.RemoveController">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+
+	<!-- AddController -->
+	<bean id="/add.do" class="presentation.AddController">
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<!-- ShowAllController -->
+	<bean name="/showAllList.do" class="presentation.ShowAllController">
+		<property name="userServiceImpl" ref="userService"></property>
+	</bean>
+
+	<!-- ShowUserController -->
+	<bean id="/showUser.do" class="presentation.ShowUserContorller">
+		<property name="userService" ref="userService" />
+	</bean>
+	
+	<!-- UPdateController -->
+	<bean id="/update.do" class="presentation.UpdateController">
+		<property name="userService" ref="userService"/>
+	</bean>
+</beans>

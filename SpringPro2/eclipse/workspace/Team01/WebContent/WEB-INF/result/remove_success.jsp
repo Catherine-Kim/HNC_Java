@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<h2> 회원 탈퇴 결과</h2>
+
+${userId}님 회원 탈퇴 성공
+
+<a href="remove.html">다시하기</a>
+<a href="index.html">홈으로</a>
+
+</body>
+</html>
