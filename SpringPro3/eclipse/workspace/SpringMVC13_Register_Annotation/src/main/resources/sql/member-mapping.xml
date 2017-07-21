@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 
+WEB-INF / spring / root-context.xml
+WEB-INF / spring / presentationBean.xml 
+-->
+
+
+<mapper namespace="memberMapper">
+<!-- resultMap -->
+	<resultMap type="member" id="memberSelectMap">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="password" column="password"/>
+		<result property="address" column="address"/>
+	</resultMap>
+	
+	<!--sql 구문의 모듈화  -->
+	<sql id="select-member">
+		SELECT
+		id, password, name, address
+		FROM member
+	</sql>
+	<insert id="registerMember" parameterType="member">
+		INSERT 
+		INTO member VALUES(#{id},#{password},#{name},#{address})		
+	</insert>
+	<!-- java.lang.Boolean  :  boolean 
+		 java.lang.String : string
+		 java.lang.Integer : int
+		 int  : _int
+		 boolean : _boolean
+	-->
+	<select id="idcheck" parameterType="string" resultType="string">
+		SELECT id FROM member
+		WHERE id=#{value}
+	</select>
+
+	<select id="login" parameterType="member" resultMap="memberSelectMap">
+		<include refid="select-member"/>
+		WHERE id=#{id} AND password=#{password}
+	</select>
+	
+	<update id="updateMember" parameterType="member">
+		UPDATE member SET
+		password=#{password},
+		name=#{name},
+		address=#{address}
+		WHERE id=#{id}
+	</update>
+	
+	<select id="findByAddress" parameterType="string" resultMap="memberSelectMap">
+		<include refid="select-member"/>
+		WHERE address=#{value}
+	</select>
+	
+	<select id="getAddressKind" resultType="string">
+		SELECT DISTINCT(address) FROM member
+	</select>
+	
+	<select id="getAllMember" resultMap="memberSelectMap">
+		<include refid="select-member"/>
+	</select>	
+</mapper>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
