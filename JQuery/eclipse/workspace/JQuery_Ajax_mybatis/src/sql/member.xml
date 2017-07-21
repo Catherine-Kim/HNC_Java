@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member">
+	<select id="findMemberById" resultType="mem" parameterType="string">
+		SELECT id, password, name, address 
+		FROM member WHERE id=#{value}	
+	</select>
+	
+	<select id="getAddressKindList" resultType="string">
+		SELECT distinct(address) FROM member
+	</select>
+	
+	<select id="findByAddress" resultType="mem" parameterType="string">
+		SELECT id, password, name, address 
+		FROM member WHERE id=#{address}	
+	</select>
+	
+	<select id="getMemberCountByAddress" resultType="int" parameterType="string">
+		SELECT COUNT(-1) FROM member WHERE address=#{value}
+	</select>
+	
+	<sql id="selectMember">
+	SELECT id, password, name, address FROM member
+	</sql>
+	<select id="getMemberListByAddress" parameterType="string" resultType="mem">
+		<include refid="selectMember"/>
+		WHERE address=#{value}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
