@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script>
+	var xhr;
+	function startRequest(){
+		// var userName = document.frm.userName;
+		var userName = document.getElementById("userName").value;
+		var ename = encodeURIComponent(userName);
+		
+		// required 속성 구현
+		if(userName == ""){
+			alert("이름부터 입력하시지");
+			userName.value = "";
+			return;
+		}
+		
+		xhr = new XMLHttpRequest();
+		
+		xhr.onreadystatechange = callback;
+		xhr.open("get", "FindNickServlet?name=" + ename);
+		
+		xhr.send(null);
+	}
+	
+	function callback(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+				var text = xhr.responseText;
+				doument.getElementById("resultView").innerHTML = 
+										"<font color='purple'>" + text + "/<font>";
+				document.getElementById("userName").value = "";
+				document.getElementById("userName").focus();
+			}
+		}
+	}
+</script>
+</head>
+<body>
+
+<h2 align="center">Nickname Finding...</h2><p>
+<form name="frm">
+	NAME : <input type="text" name="userName" id="userName"><p>
+	<input type="button" value="별명찾기" onclick="startRequest()">
+	<span id="resultView"></span>
+</form>
+
+</body>
+</html>

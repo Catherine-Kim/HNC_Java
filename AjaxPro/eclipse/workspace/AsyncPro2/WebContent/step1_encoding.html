@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	var xhr;
+	
+	function startRequest(){
+		var uid = document.frm.userId;
+		
+		xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = callback;
+		
+		// GET 방식일 때 한글을 인코딩 처리
+		// uid = escape(encodeURIComponent(uid.value));  <-- 정석 방식	
+		uid = encodeURIComponent(uid.value); 	// escape()를 생략할 수 있음
+		
+		xhr.open("get", "EncodingAjaxServlet?id="+uid);
+		xhr.send(null);
+		//alert(xhr.readyState);
+	}
+	
+	function callback(){
+		if(xhr.readyState==4){
+			if(xhr.status == 200){
+				var text = xhr.responseText.trim();
+				document.getElementById("resultView").innerHTML =
+									"<font color=blue size=5>" + text + "</font>";
+				
+				// 입력칸 초기화
+				document.frm.userId.value = "";
+				document.frm.userId.focus();
+			}
+		}else{	// xhr.status가 2 or 3일 경우
+			// 이미지를 뿌릴 거임
+			document.getElementById("resultView").innerHTML = "<img src='img/a.gif'>";
+		}	
+	}
+</script>
+
+</head>
+<body>
+
+<h2 align="center">GET 방식 Javascript에서의 한글 인코딩 </h2><p>
+<form name="frm">
+	아이디 : <input type="text" name="userId">
+	<input type="button" value="아이디 보내기" onclick="startRequest()">
+	<div id="resultView"></div>
+</form>
+
+</body>
+</html>
