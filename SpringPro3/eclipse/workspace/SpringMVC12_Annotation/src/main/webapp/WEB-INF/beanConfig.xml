@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<!-- jdbc.properties 값 뜰어당기기..classpath 붙여서 하기 -->
+	<context:property-placeholder location="classpath:config/jdbc.properties" />
+	<context:annotation-config />
+	<context:component-scan base-package="*"/>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- dependency에 dbcp 관련 jar 2개 추가 :: DataSource 등록 -->
+	<bean id="dataSorce" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${JDBC.driver}" />
+		<property name="url" value="${JDBC.url}" />
+		<property name="username" value="${JDBC.username}" />
+		<property name="password" value="${JDBC.password}" />
+	</bean>
+	<!-- classpath 생략못함.. -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:config/SqlMapConfig.xml" />
+		<property name="dataSource" ref="dataSorce" />
+	</bean>
+
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+
+</beans>

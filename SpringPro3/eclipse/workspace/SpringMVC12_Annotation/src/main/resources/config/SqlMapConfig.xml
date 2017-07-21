@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<properties resource="config/jdbc.properties"/><!-- unit시 생략 -->
+
+<settings>
+	<setting name="jdbcTypeForNull" value="NULL"/>
+</settings>
+
+<typeAliases>
+	<typeAlias type="product.service.vo.MyProductVO"  alias="product"/>
+</typeAliases>
+
+<environments default="dbserver"><!-- unit시 생략 -->
+	<environment id="dbserver">
+		<transactionManager type="JDBC"/>
+		<dataSource type="UNPOOLED">
+			<property name="driver" value="${JDBC.driver}"/>
+			<property name="url" value="${JDBC.url}"/>
+			<property name="username" value="${JDBC.username}"/>
+			<property name="password" value="${JDBC.password}"/>
+		</dataSource>
+	</environment>
+</environments>
+
+<mappers>
+	<mapper resource="sql/productMapper.xml"/>
+</mappers>
+</configuration>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

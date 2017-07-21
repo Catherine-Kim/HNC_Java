@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+상품을 등록하는 쿼리문을 작성
+::
+시퀀스가 있을때의 insert 문은 selectKey라는 엘러먼트를 사용한다
+시퀀스가 있는 insert문에서는 selectKey를 써야한다
+ -->
+<mapper namespace="productMapper">
+	<insert id="insertMyProduct" parameterType="product">
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+			SELECT myproduct_seq.nextVal FROM dual
+		</selectKey>
+		INSERT
+		INTO myproduct VALUES(#{id}, #{name},#{maker},#{price})
+	</insert>
+	
+<!-- 저장된 상품을 찾아오는 쿼리문 ::
+	1)상품 메이커를 검색해서 해당 상품에 대한 정보를 찾아올 것이다.
+	2)와일드카트를 사용해서 특정한 단어, 문자가 들어있는(포함되어 있는)
+	 상품들을 찾아올 것이다. 상품이름으로 찾는것..
+	 resultMap를 등록을 먼저해서 정확도를 높이도록 하겠다.
+ -->
+ 
+ <resultMap type="product" id="productSelectMap">
+ 	<result property="id" column="id"/>
+ 	<result property="name" column="name"/>
+ 	<result property="maker" column="maker"/>
+ 	<result property="price" column="price"/>
+ </resultMap>
+ 
+ <select id="findByMaker" parameterType="string" resultMap="productSelectMap">
+ 	SELECT
+ 	id, name, maker, price
+ 	FROM myproduct
+ 	WHERE maker = #{value}
+ </select>
+ <select id="findByProductName" parameterType="string" resultMap="productSelectMap">
+ 	SELECT
+ 	id, name, maker, price
+ 	FROM myproduct
+ 	WHERE name LIKE '%' || #{value} || '%'
+ </select>
+</mapper>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
