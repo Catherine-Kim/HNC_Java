@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- SQL definition -->
+<mapper namespace="User02">
+	<sql id="select-column">
+		user_id userId,
+		user_name userName,
+		password,
+		age,
+		grade,
+		reg_date
+	</sql>
+	<select id="getUser01" parameterType="string" resultType="user">
+		SELECT
+		<include refid="select-column"/>
+		FROM users
+		WHERE user_id LIKE #{value}
+	</select>
+	
+	<select id="getUser02" parameterType="string" resultType="user">
+		SELECT
+		<include refid="select-column"/>
+		FROM users
+		WHERE user_id LIKE #{userId}
+	</select>
+	
+	<select id="getUser03" parameterType="string" resultType="user">
+		SELECT
+		<include refid="select-column"/>
+		FROM users
+		WHERE user_id LIKE #{value} || '%'                                                      
+	</select>
+	
+	<select id="getUser04" parameterType="string" resultType="user">
+		SELECT
+		<include refid="select-column"/>
+		FROM users
+		WHERE user_id LIKE '%' || SUBSTR(#{userId}, -2)      
+	</select>
+</mapper>

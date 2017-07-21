@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- SQL definition -->
+<mapper namespace="User10">
+
+	<resultMap type="user" id="userSelectResultMap">
+		<result property="userId" column="user_id" />
+		<result property="userName" column="user_name" />
+		<result property="password" column="password" />
+		<result property="age" column="age" />
+		<result property="grade" column="grade" />
+		<result property="regDate" column="reg_date" />
+	</resultMap>
+
+	<sql id="select-users">
+		SELECT
+		user_id, user_name, password, age, grade, reg_date
+		FROM users
+	</sql>
+
+	<sql id="order-by-userid-desc">
+		ORDER BY user_id DESC
+	</sql>
+
+	<!-- 추가 -->
+	<sql id="insert-column">
+		user_id, user_name, password, age, grade, reg_date
+	</sql>
+
+	<!-- Static SQL -->
+	<select id="getUser" parameterType="user" resultMap="userSelectResultMap">
+		<include refid="select-users" />
+		WHERE user_id = #{userId}
+	</select>
+
+	<!-- 여기부터 쭈욱 추가 -->
+	<insert id="addUser" parameterType="user">
+		INSERT
+		INTO users (
+		<include refid="insert-column" />
+		)
+		VALUES(
+		#{userId},
+		#{userName},
+		#{password},
+		#{age},
+		#{grade},
+		#{regDate}
+		)
+	</insert>
+
+	<update id="updateUser" parameterType="user">
+		UPDATE users
+		SET
+		user_name=#{userName},
+		age=#{age},
+		password=#{password},
+		grade=#{grade}
+		WHERE user_id=#{userId}
+	</update>
+
+	<delete id="removeUser" parameterType="string">
+		DELETE FROM users
+		WHERE
+		user_id = #{value}
+	</delete>
+
+	<select id="getUserList" parameterType="user" resultMap="userSelectResultMap">
+		<include refid="select-users"></include>
+		<where>
+			<if test="userName != null">
+				user_name LIKE #{userName}
+			</if>
+			<if test="age != null">
+				OR age LIKE #{age}
+			</if>
+		</where>
+		<include refid="order-by-userid-desc" />
+	</select>
+</mapper>
