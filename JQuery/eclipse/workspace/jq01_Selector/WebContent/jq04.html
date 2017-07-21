@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// 1. h1 태그 중 id 값이 tqrget인 선택자 - 글자색 : red
+		$('h1#target').css('color', 'red');
+	
+		// 2. h1 태그 중 class 값이 item인 선택자 - 글자색 : blue
+		$('h1.item').css('color', 'blue');
+			
+		// 3. id 값이 target인 선택자 - 배경색 : yellow
+		$('#target').css('background', 'yellow');
+		
+		// 4. 세 번째 h1 - 경계선 : 2px, solid, magenta
+		$('h1:eq(2)').css('border', '2px solid magenta');
+		
+		// 5. class 값이 selector인 선택자 - 글자색 : orange
+		$('.selector').css('color', 'orange');
+	});
+</script>
+</head>
+<body>
+	<h1>HEADER-0</h1>
+	
+	<h1 id="target">HEADER-1</h1>
+	<h1 id="kosta">HEADER-2</h1>
+	<h1 id="target3">HEADER-3</h1>
+	
+	<h1 class="item selector">HEADER-4</h1>
+	<h1 class="item">HEADER-5</h1>
+</body>
+</html>

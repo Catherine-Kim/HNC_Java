@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>addClass() 함수 사용법</title>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<style type="text/css">
+	.high_light_0 {background: yellow;}
+	.high_light_1 {background: orange;}
+	.high_light_2 {background: green;}
+	.high_light_3 {background: blue;}
+	.high_light_4 {background: fuchsia;}
+	.high_light_5 {background: maroon;}
+	.high_light_6 {background: pink;}
+	.high_light_7 {background: olive;}
+	
+	.th{color: lime;}
+</style>
+<script type="text/javascript">
+	$(function(){
+		$('h1').each(function(index){
+			$(this).addClass('high_light_' + index);
+		}); // each()
+		
+		$('h1:even').addClass('th');
+		$('h1:odd').addClass('th');
+	});
+</script>
+</head>
+<body>
+	<h1>Item-0</h1>
+	<h1>Item-1</h1>
+	<h1>Item-2</h1>
+	<h1>Item-3</h1>
+	<h1>Item-4</h1>
+	<h1>Item-5</h1>
+	<h1>Item-6</h1>
+	<h1>Item-7</h1>
+</body>
+</html>

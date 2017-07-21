@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// 입력 form을 선택자로 지정 & 값 집어넣기
+		var name = $('input[type=text]').val();
+		alert('Your name is ' + name);
+	});
+</script>
+</head>
+<body>
+	<form action="jq05_result.jsp" method="GET">
+		<input type="text" name="name">
+		<input type="submit">
+	</form>	
+</body>
+</html>

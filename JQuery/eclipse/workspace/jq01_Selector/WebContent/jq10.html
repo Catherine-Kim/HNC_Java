@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>...</title>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<style type="text/css">
+	
+</style>
+<script type="text/javascript">
+	$(function(){
+		// 1. setTimeout()
+		setTimeout(function(){
+			alert($('select>option:selected').val());
+		}, 5000);	// setTimeout()
+		
+		// 2. select에서 선택한 이름이 3초 뒤에 아래에 있는 입력칸에 입력되도록
+		setTimeout(function(){
+			$('input').val($('select>option:selected').val());
+		}, 3000);
+	});
+</script>
+</head>
+<body>
+	<select multiple="multiple">
+		<option>Crystal</option>
+		<option>Amber</option>
+		<option>Victoria</option>
+		<option>Luna</option>
+	</select><br/>
+	<!-- 선택한 이름을 입력받는 form 추가 -->
+	NAME : <input type="text" size="16">
+</body>
+</html>

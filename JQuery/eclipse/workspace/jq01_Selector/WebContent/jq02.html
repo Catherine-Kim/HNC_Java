@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// 1. 여러 개의 태그를 한꺼번에 지정하기(열거형)
+		// > p, h1 태그 - 글자색 : orange
+		$('p, h1').css('color', 'orange');
+		
+		// 2. div 태그의 자식인 h1 태그를 선택자로 지정
+		// > 배경색 : cyan
+		$('div>h1').css('background', 'cyan');
+		
+		// 3. <body>의 자식인 <p>를 선택자로 지정 - 공백 사용
+		// > 글자색 : red
+		//$('body p').css('color', 'red');
+		
+		// 4. <body>의 자식인 <p>를 선택자로 지정 - > 사용
+		// > 글자색 : red
+		$('body>p').css('color', 'red');
+	});
+</script>
+</head>
+<body>
+	<p>jQuery Selector Test...</p>
+	
+	<h1>Today jQuery class</h1>
+	
+	<div>
+		Event Jquery
+		<h1>sliding event</h1>
+		<p>메롱</p>
+	</div>
+</body>
+</html>

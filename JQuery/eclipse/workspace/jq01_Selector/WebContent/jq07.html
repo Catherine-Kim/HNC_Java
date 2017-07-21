@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>addClass() 함수 사용법</title>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<style type="text/css">
+	.view{
+		font-size: 40px;
+	}
+	
+	.view2{
+		background-color: yellow;
+		color: red;
+	}
+	
+	.view3{
+		border: 2px dotted maroon;
+	}
+</style>
+<script type="text/javascript">
+	$(function(){
+		$('p').addClass('view');
+		$('div.kosta').addClass('view2');
+		$('#add').addClass('view3');
+	});
+</script>
+</head>
+<body>
+	<h2>addClass() 사용법 :: html 코드와 css를 분리</h2>
+	<p>Hello jQuery
+		<b id="add">addClass()는 아주 자주 사용되는 중요한 함수입니당</b>
+		<div class="kosta">Lunch Time</div>
+</body>
+</html>
