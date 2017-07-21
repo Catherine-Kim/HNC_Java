@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+	table tr td {border: 2px solid black; margin: 10px; width: 80px; height: 90px;}
+	.small img {border: none; margin: 10px; width: 80px; height: 90px;}
+	.large img {width: 450px;}
+	
+	.hover {background-color: lime; color: black;}
+</style>
+<script type="text/javascript">
+	$(function(){
+		// mouse가 특정 영역(small) 안에 들어가면 
+		$('.small').hover(function(){
+			// 1. hover 효과 적용
+			$(this).parent().addClass('hover');	
+			
+			// 2. 마우스가 진입한 이미지의 이름 얻기
+			var imagename = $(this).attr('href');	// href 속성의 값 리턴
+			
+			// 3. large 부분의 이미지를 fadeOut
+			/*$('.large').children().fadeOut();
+			
+			// 4. large 부분에 hover된 이미지를 크게 보여주도록 해보자
+			$('.large').children().attr('src', imagename);		// src 속성에 imagename을 set
+			$('.large').children().fadeIn(); */
+			
+			$('.large').fadeTo('fast', 0, function(){
+				$(this).find('img').attr('src', imagename)
+			}).fadeTo('fast', 0.6)
+			
+		}, function(){
+			$(this).parent().removeClass('hover');
+		});
+	});
+</script>
+<body>
+	<table>
+		<tr>
+			<td width="150" align="center" height="200"> 
+				<a class="small" href="./image/2.JPG">
+					<img src="./image/2.JPG">
+				</a>
+				<p>소희찡</p>
+			</td>
+			<td width="350" align="center" rowspan="5"> 
+				<a class="large" href="./image/2.JPG">
+					<img src="./image/2.JPG">
+				</a>
+				<p>소희찡</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="150" align="center" height="200"> 
+				<a class="small" href="./image/3.JPG">
+					<img src="./image/3.JPG">
+				</a>
+				<p>승연찡</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="150" align="center" height="200"> 
+				<a class="small" href="./image/4.JPG">
+					<img src="./image/4.JPG">
+				</a>
+				<p>닉쿤찡</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="150" align="center" height="200"> 
+				<a class="small" href="./image/5.JPG">
+					<img src="./image/5.JPG">
+				</a>
+				<p>근석찡</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="150" align="center" height="200"> 
+				<a class="small" href="./image/1.JPG">
+					<img src="./image/1.JPG">
+				</a>
+				<p>태희찡</p>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

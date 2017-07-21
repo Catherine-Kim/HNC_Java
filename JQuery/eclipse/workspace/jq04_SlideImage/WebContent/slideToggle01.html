@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+	.image {position: absolute; top: 10px; left: 10px;}
+</style>
+<script type="text/javascript">
+	$(function(){
+		// 1. 페이지가 로딩되고나면 일단 모든 이미지는 숨긴다
+		$('.image').hide();
+		
+		// 2. 첫 번째 이미지가 보여지도록 해보자
+		$('.image').first().show('fast');
+		
+		// 3. 현재 보이는 이미지를 클릭할 때마다 다음 이미지가 나타나도록 해보자
+		$('.image').click(function(event){
+			//var next = ($(this).next().length!=0)?$(this).next():$('.image:first');
+			event.preventDefault();	// a 태그의 href가 동작하지 않게 하는 함수
+			$(this).next().show('fast');
+			if($(this).next().length == 0){
+				$('.image').hide();
+				$('.image').first().show('fast');
+			}
+		});
+	});
+</script>
+<body>
+	<a class="image" href="http://jquery.com">
+		<img src="./image/1.JPG" width="300">
+	</a>
+	<a class="image">
+		<img src="./image/2.JPG" width="300">
+	</a>
+	<a class="image">
+		<img src="./image/3.JPG" width="300">
+	</a>
+	<a class="image">
+		<img src="./image/4.JPG" width="300">
+	</a>
+	<a class="image">
+		<img src="./image/5.JPG" width="300">
+	</a>
+</body>
+</html>
