@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+	<!-- INSERT : write -->
+	<insert id="write" parameterType="board">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT springboard_seq.nextVal
+			FROM dual
+		</selectKey>
+		INSERT into springboard
+		(no, title, content, w_date, id)
+		VALUES(#{no}, #{title}, #{content}, sysdate, #{memberVO.id})
+	</insert>
+	
+	<!-- SELECT : selectByNoForDate -->
+	<select id="selectByNoForDate" parameterType="int" resultType="string">
+		SELECT w_date
+		FROM springboard
+		WHERE no=#{value}
+	</select>
+	
+	<!-- ResultMap : 글 목록 가져오기 -->
+	<resultMap type="board" id="boardListRM">
+		<result property="no" column="no"/>
+		<result property="title" column="title"/>
+		<result property="count" column="count"/>
+		<result property="writeDate" column="w_date"/>
+		<result property="memberVO.name" column="name"/>
+	</resultMap>
+	
+	<!-- SELECT : getBoardList -->
+	<select id="getBoardList" parameterType="int" resultMap="boardListRM">
+		SELECT no, title, count, w_date, id FROM
+			(SELECT no, title, count, w_date, id, CEIL(rownum/5) AS page FROM
+				(SELECT no, title, count, to_char(w_date, 'yyyy-mm-dd') w_date, s.id
+			     FROM springboard s, member m
+				 WHERE s.id = m.id
+				 ORDER BY no DESC))
+		WHERE page = #{value}
+	</select>
+	
+	<!-- ResultMap : 상세 글보기 -->
+	<resultMap type="board" id="boardRM" extends="boardListRM">
+		<result property="content" column="content"/>
+		<result property="memberVO.id" column="id"/>
+	</resultMap>
+	
+	<!-- SELECT : showContent -->
+	<select id="showContent" parameterType="int" resultMap="boardRM">
+		SELECT no, title, count, content, w_date, content, m.id, m.name
+		FROM springboard s, member m
+		WHERE m.id = s.id AND s.no=#{value}
+	</select>
+	
+	<!-- UPDATE : countUpdate -->
+	<update id="countUpdate" parameterType="int">
+		UPDATE springboard
+		SET count = count + 1
+		WHERE no = #{value}
+	</update>
+	
+	<!-- DELETE : deleteBoard -->
+	<delete id="deleteBoard" parameterType="string">
+		DELETE FROM springboard
+		WHERE no=#{value}
+	</delete>
+	
+	<!-- SELECT : totalCount -->
+	<select id="totalCount" resultType="int">
+		SELECT COUNT(-1) FROM springboard;
+	</select>
+	
+	<!-- UPDATE : updateBoard -->
+	<update id="updateBoard" parameterType="board">
+		UPDATE springboard
+		SET title = #{title}, content = #{content}
+		WHERE no = #{no}
+	</update>
+	
+</mapper>	
+
