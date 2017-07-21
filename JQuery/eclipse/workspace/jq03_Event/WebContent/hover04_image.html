@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>hover() 이미지에 적용</title>
+<style type="text/css">
+	.double{width: 200px;}
+</style>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// 1. 각각의 이미지에 마우스를 갖다대면 원래 크기의 2배가 되도록
+		$('img').hover(function(){
+			$(this).addClass('double');
+		}, function(){
+			$(this).removeClass('double');
+		});
+		
+	});
+</script>
+</head>
+<body>
+	<h2>The Select Image</h2>
+	<img alt="" src="./image/1.JPG" width="100">
+	<img alt="" src="./image/2.JPG" width="100">
+	<img alt="" src="./image/3.JPG" width="100">
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>on()</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style type="text/css">
+	* {margin: 10px; padding: 10px; border: 3px solid black;}
+	div {border-radius: 10px;}
+</style>
+<script type="text/javascript">
+	$(function(){
+		// 1. div 클릭하면
+		/* $('div').on('click', function(){
+			// 2. 해당 영역을 복제해서 body에 덧붙이기 - clone()
+			$(this).clone().appendTo('body');	// append() 아님 주의
+		}); */
+		
+		$('div').one('click', function(){
+			// 2. 해당 영역을 복제해서 body에 덧붙이기 - clone()
+			$(this).clone().appendTo('body');	// append() 아님 주의
+		});
+	});
+</script>
+<body>
+	<div>
+		<h1>$(selector).on()</h1>
+		<p>on() 함수 적용하기 :: live() 대신에 권장됨</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		// 1. h1 태그를 클릭하면 STAR :: 옆에 ☆이 찍히도록 해보자
+		$('h1').click(function(){
+			$(this).html(function(index, html){
+				return html + '☆';
+			});
+		});
+		
+		// 2. 내가 클릭하지 않아도 무조건 위의 이벤트가 진행되도록 해보자
+		// > setInterval()과 trigger()을 사용해볼 것
+		setInterval(function(){
+			$('h1').trigger('click');
+		}, 1500);
+		
+		$('button').click(function(){
+			$('h1').unbind();
+		});
+	});
+</script>
+<body>
+	<h1>STAR :: </h1><p>
+	<button>Stop printing ☆"</button>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		// 1. h1 태그를 클릭하면
+		/* $('h1').click(function(){
+			// 2. h1 태그의 개수를 변수로 할당 받아서 alert로 띄워보자
+			var length = $('h1').length;
+			// alert(length);
+			var text = $(this).text();
+			// alert(text);
+			
+			// 3. length와 text의 값을 div 태그에 h1 크기로 붙이기
+			$('div').append("<h1>" + length + ", " + text + "</h1>");
+		}); */
+		
+		$('h1').live('click', function(){
+			var length = $('h1').length;
+			var text = $(this).text();
+			$('div').append("<h1>" + length + ", " + text + "</h1>");
+		});
+	});
+</script>
+<body>
+	<div id="wrap">
+		<h1>Header</h1>
+	</div>	
+</body>
+</html>

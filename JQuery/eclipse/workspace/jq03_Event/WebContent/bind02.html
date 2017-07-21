@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>bind()</title>
+<style type="text/css">
+	.reverse{background-color: blue; color: white;}
+</style>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('h2').bind({
+			// 마우스가 특정 영역 안으로 들어갔을 때 발생하는 이벤트 : mouseenter
+			mouseenter:function(){
+				$(this).addClass('reverse');
+			},
+			
+			// 마우스가 특정 영역 밖을 나갔을 때 발생하는 이벤트 : mouseleave
+			mouseleave:function(){
+				$(this).removeClass('reverse');
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>오늘은 화요일입니당당</h2>
+	<h2>오후시간부터는 Essence를 진행하도록 하겠습니다.</h2>
+	<h2>Essence는 프로젝트 토입 전 설계방법론입니당</h2>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		// 1. 첫번째 h2 클릭하면 글씨가 CLICKED로 바뀌고 alert 뜨도록 해보자
+		$('h2:first').click(function(){
+			$(this).html('<font color=red>CLICKED</font>');
+			alert("Click Function Called");
+			
+			// 2. 클릭 이벤트를 해제하는 함수 적용
+			$(this).unbind();		// 클릭이벤트에만 적용되는 함수
+		});
+	});
+</script>
+<body>
+	<h2>hahahahahahahahaha</h2>
+	<h2>hihihihihihihihihi</h2>
+	<h2>hehehehehehehehehe</h2>
+</body>
+</html>

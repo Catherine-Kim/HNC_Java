@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+	* {
+		margin: 0px;
+		padding: 0px;
+	}
+	div {
+		margin: 5px;
+		padding: 3px;
+		border: 3px solid black;
+		border-radius: 10px;
+	}
+</style>
+<script type="text/javascript">
+	$(function(){
+		// 1. 각각의 div를 클릭하면 기사 제목이 alert()로 뜨도록 해보자
+		$('div').click(function(){
+			// alert($(this).find('h1').text());
+			
+			// 1-1. teacher's ver.
+			var h1 = $('h1', this).text();
+			var p = $('p', this). text();
+			alert(h1 + "\n\n" + p);
+		});
+	});
+</script>
+<body>
+	<div>
+		<h1>Steve Scalise Among 4 Shot at Baseball Field; Suspect Is Dead</h1>
+		<p>A lone gunman who was said to be distraught over President Trump's election opened fire on Republican members of the congressional baseball team at a practice field in this Washington suburb on Wednesday, using a rifle to shower the field with bullets that struck four people, including Steve Scalise, the majority whip of the House of Representatives.
+
+Mr. Trump, in a televised statement from the White House, condemned the "very, very brutal assault" and said the gunman had died after a shootout with the police. Law enforcement authorities identified him as James T. Hodgkinson, 66, from Belleville, Ill., a suburb of St. Louis.</p>
+	</div>
+	<div>
+		<h1>Questions Mount After Fire at Grenfell Tower in London Kills at Least 12</h1>
+		<p>Adib Abbas, an observant Muslim, was preparing an early morning Ramadan meal in a ninth-floor apartment at Grenfell Tower when he suddenly smelled gas. On the same floor, Hanan Wahabi woke up and realized that something was terribly wrong. The night air had the stench of smoke and ash.
+
+From those terrifying moments, residents found themselves in a nightmare: Their 24-story building, with 120 apartments, was gutted by flames early Wednesday, in what authorities called London's worst building fire in years.</p>
+	</div>
+	<div>
+		<h1>Patricia Knatchbull, a Grande Dame of Britain's Elite, Dies at 93</h1>
+		<p>Patricia Knatchbull, a grande dame of Britain's titled elite, whose life embraced a fabled childhood between two world wars and deep personal tragedy after her father and a teenage son were killed in a bomb attack at sea, died on Tuesday at her home in England, in Mersham, Kent. Lady Mountbatten, as she was known, was 93.
+
+Her death was confirmed by Paul Beresford-Hill, the director general of the Mountbatten Institute.</p>
+	</div>
+</body>
+</html>

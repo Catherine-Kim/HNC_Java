@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>bind() :: hover()</title>
+<style type="text/css">
+	.reverse{background-color: blue; color: white;}
+</style>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('h2').hover(function(){
+			$(this).addClass('reverse');	// mouseenter
+		}, function(){
+			$(this).removeClass('reverse');	// mouseleave
+		}); // hover()
+		
+		// 클릭하면 별 찍히도록
+		$('h2').click(function(){
+			$(this).html(function(index, html){
+				return html + '☆';
+			});
+		}); // click()
+	});
+</script>
+</head>
+<body>
+	<h2>오늘은 화요일입니당당</h2>
+	<h2>오후시간부터는 Essence를 진행하도록 하겠습니다.</h2>
+	<h2>Essence는 프로젝트 토입 전 설계방법론입니당</h2>
+</body>
+</html>

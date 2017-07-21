@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+</style>
+<script type="text/javascript">
+	$(function(){
+		// textarea에 타이핑이 이루어지면(key event가 발생하면)
+		$('textarea').keyup(function(){
+			// h1 태그 영역에 30/70 이런 식으로 앞으로 더 쓸 수 있는 내용의 길이가 뜨도록 하겠음
+			var inputlength = $(this).val().length;
+			var remain = 70 - inputlength;
+			$('h1').html(function(){
+				// remain이 50 ~ 70이면 글자색 blue
+				// remain이 20 ~ 49이면 글자색 purple
+				// remain이 1 ~ 19이면 글자색 red
+				// reamin이 1보다 작아지면 글자가 더이상 입력되지 않도록
+				if(remain >= 50) $(this).css('color', 'blue')
+				else if(remain >= 20 && remain < 50) $(this).css('color', 'purple')
+				else if(remain >= 1 && remain < 20) $(this).css('color', 'red')
+				else alert('더 이상 글자 못 입력해요ㅠㅠ')
+				
+				return remain + '/70';
+			});
+		});
+	});
+</script>
+<body>
+	<div>
+		<p>방명록입니다. 짧은 소감을 남겨주셔요. (100자 미만으로여)</p>
+		<h1>70</h1>
+		<textarea rows="5" cols="70" maxlength="70"></textarea>
+	</div>
+</body>
+</html>

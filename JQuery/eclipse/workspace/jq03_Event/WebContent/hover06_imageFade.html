@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>fadeIn(), fadeOut() :: show(), hide()</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		$('#mouseIn').css({
+			'background': 'yellow',
+			'font-size': '23px'
+		});
+		
+		// 1. 일단 페이지가 로딩되면 이미지를 숨긴다
+		$('div').hide();
+		
+		// 2. hover()를 이용해 마우스가 span 영역에 진입하면 이미지가 보이고 빠져나오면 안 보이도록
+		$('#mouseIn').hover(function(){	// mouseenter
+			//$('#showImage').show();
+			//$('#showImage').show(2000);
+			$('#showImage').fadeIn(2000);
+		}, function(){					// mouseleave
+			//$('#showImage').hide();		
+			//$('#showImage').hide(3000);
+			$('#showImage').fadeOut(3000);
+		});
+	})
+</script>
+</head>
+<body>
+	<span id="mouseIn">++++++++++ 사진 보기 (마우스를 이곳에다 올려보삼) ++++++++++</span>
+	<p><p>
+	<div id="showImage"><img src="./image/1.JPG" width="300"></div>
+</body>
+</html>

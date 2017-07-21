@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>find()</title>
+<style type="text/css">
+	table {border: 3px solid olive; width: 550px; margin: auto; text-align: center;}
+	tr, th, td {border: 2px solid olive; font-size: 20px; height: 45px; font-family: Times;}
+	.design {background-color: #6b823e; color: white;}
+</style>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// 1. 각각의 이미지에 마우스를 갖다대면 원래 크기의 2배가 되도록
+		$('tbody>tr').hover(function(){	
+			// 현재 이벤트가 적용된 tr 중에서 <td> 태그를 발견하면 addClass() 적용
+			$(this).find('td').addClass('design');		// mouseenter
+		}, function(){
+			// 현재 이벤트가 적용된 tr 중에서 <td> 태그를 발견하면 removeClass() 적용
+			$(this).find('td').removeClass('design');	// mouseleave
+		});
+	});
+</script>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Job</th>
+				<th>Address</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Friendship</td>
+				<td>Student</td>
+				<td>California</td>
+			</tr>
+			<tr>
+				<td>Woojeong Kim</td>
+				<td>Engineer</td>
+				<td>Washington</td>
+			</tr>
+			<tr>
+				<td>Catherine Kim</td>
+				<td>Programmer</td>
+				<td>Texas</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
