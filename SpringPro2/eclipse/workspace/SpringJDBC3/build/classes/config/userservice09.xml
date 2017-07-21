@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	
+	<context:component-scan base-package="*"/>
+	
+	<!-- sqlMap을 Bean으로 등록 : 객체의 값으로 외부 자원의 값이 바인딩되는 것 -->
+	<util:properties id="sql" location="classpath:sql/spring-userservice-sql.properties"/>
+	<bean id="sqlService" class="spring.service.user.impl.SqlServiceImpl06">
+		<property name="sqlMap" ref="sql"/>
+	</bean>
+	
+	<!-- SpringJdbcUserDaoImpl09 -->
+	<bean id="springJdbcUserDaoImpl09" class="spring.service.user.impl.SpringJdbcUserDaoImpl09">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+</beans>
