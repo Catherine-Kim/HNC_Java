@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sawonMapper">
+ 	<insert id="insertSawon" parameterType="mysavo">
+ 		INSERT
+ 		INTO mysawon VALUES(
+ 			mysawon_seq.nextVal,
+ 			#{id},
+ 			#{pwd},
+ 			#{name},
+ 			#{age},
+ 			SYSDATE
+ 		)
+ 	</insert>
+ 	<select id="selectAllSawon" resultType="mysavo">
+ 		SELECT
+ 		num, id, name, age, TO_CHAR(hiredate, 'yyyy-mm-dd') hiredate
+ 		FROM mysawon
+ 		ORDER BY num DESC
+ 	</select>
+</mapper>
