@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<context:annotation-config/>
+	<context:component-scan base-package="*"/>
+	
+	<!-- InternalResourceViewResolver -->
+	<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"/>
+		<property name="suffix" value=".jsp"/>
+		<property name="order" value="1"/>
+	</bean>
+
+	<!-- BasicDataSource -->
+	<context:property-placeholder location="classpath:config/jdbc.properties"/>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${JDBC.driver}"/>
+		<property name="url" value="${JDBC.url}"/>
+		<property name="username" value="${JDBC.username}"/>
+		<property name="password" value="${JDBC.password}"/>
+	</bean>
+	
+	<!-- SqlSessionFactoryBean -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:config/SqlMapConfig.xml"/>
+	</bean>
+	
+	<!-- SqlSessionTemplate -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
+	</bean>
+	
+	<!-- BoardDAO -->
+	<bean id="boardDAO" class="spring.board.model.BoardDAO"/>
+	   
+	<!-- BoardService -->
+	<bean id="boardService" class="spring.board.model.BoardService"/>
+	
+	<!-- MemberDAO -->
+	<bean id="memberDAO" class="spring.board.model.MemberDAO"/>
+	
+	<!-- MemberService -->
+	<bean id="memberService" class="spring.board.model.MemberService"/>
+	
+	<!-- BoardMemberController -->
+	
+	
+	
+	<!-- JstlView -->
+	
+	<!-- MultipartResolver -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8"/>
+		<property name="maxUploadSize" value="-1"/>
+	</bean>
+	
+	<!-- FileDownload 시 추가되는 Bean -->
+	<!-- BeanNameViewResolver -->
+	<bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"/>
+	</bean>
+	
+	<!-- DownloadView -->
+	<bean name="downloadView" class="util.DownloadView"/>
+	
+	<!-- FileUpload 시 Ajax Json 사용을 위한 Bean -->
+	<bean name="JsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>
+</beans>

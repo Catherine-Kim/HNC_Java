@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- Unit Test 시 필요 -->
+	<properties resource="config/jdbc.properties"/>
+
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="spring.board.domain.MemberVO" alias="member" />
+		<typeAlias type="spring.board.domain.BoardVO" alias="board" />
+	</typeAliases>
+	
+	<!-- Unit Test 시 필요 -->
+	<environments default="hello">
+		<environment id="hello">
+			<transactionManager type="JDBC"/>
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="${JDBC.driver}"/>
+				<property name="url" value="${JDBC.url}"/>
+				<property name="username" value="${JDBC.username}"/>
+				<property name="password" value="${JDBC.password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="sql/member.xml" />
+		<mapper resource="sql/board.xml" />
+	</mappers>
+</configuration>
+
+
+
+
+
+
+
+
