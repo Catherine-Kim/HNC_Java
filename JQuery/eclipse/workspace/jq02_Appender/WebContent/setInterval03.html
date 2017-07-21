@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	.boy{width: 200px; border: 2px solid lime;}
+</style>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('img').addClass('boy');
+		
+		// 1. 3초 뒤에 한승연이 장근석 뒤로 가게
+		/* setTimeout(function(){
+			$('body').append($('img:eq(0)'));
+		}, 3000); */
+		
+		// 2. setInterval() : 동일한 간격을 두고 같은 행위가 무한 반복됨
+		/* setInterval(function(){
+			$('body').append($('img:eq(0)'));
+		}, 1000); */
+		
+		// 3.
+		setInterval(function(){
+			$('img').first().appendTo('body');
+		}, 1000);
+	});
+</script>
+</head>
+<body>
+	<img src="./image/3.JPG">
+	<img src="./image/4.JPG">
+	<img src="./image/5.JPG">
+</body>
+</html>

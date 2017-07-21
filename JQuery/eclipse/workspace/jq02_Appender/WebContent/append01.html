@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	body {padding: 50px;}
+	div{border: 2px solid #bbb; background-color: #eee; padding: 10px; margin: 10px auto;}
+	span{
+		display: block; 
+		width: 65px; 
+		font: bold 12px Arial, sans-serif; 
+		color: white; 
+		background-color: black; 
+		padding: 5px 10px;
+	} 
+</style>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('div')
+		.append('<span>1. Append</span>')
+		.prepend('<span>2. Prepend</span>')
+		.before('<span>3. Before</span>')
+		.after('<span>4. After</span>');
+	});
+</script>
+</head>
+<body>
+	<div>
+		Description: Insert content, specified by the parameter, 
+		to the end of each element in the set of matched elements.
+	</div>
+</body>
+</html>

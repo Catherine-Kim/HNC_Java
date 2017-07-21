@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	.design {border: 2px solid maroon;}
+</style>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// 1. 배열 선언과 생성 (Map 방식으로)
+		var content = [
+			{name:'김제동', region:'마산'},
+			{name:'김어준', region:'서울'},
+			{name:'주진우', region:'경기'}
+		];
+		
+		// alert(content.length);	// 배열 잘 만들어졌는지 확인
+		
+		// 2. 각각의 div에 key, value를 출력
+		$('div').each(function(index){
+			$(this).append(
+					"<h1>" + content[index].name + "</h1>" + 
+					"<h2>" + content[index].region) + "</h2>";
+		}).addClass('design');
+	});
+</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

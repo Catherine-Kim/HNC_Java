@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>append(), prepend(), before(), after() 사용방법</title>
+<style type="text/css">
+	.angel {border: 2px; width: 200px;}
+</style>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// 1. body 태그에 Have a Nice Day를 추가 - h3
+		$('body').append('<h3>Have a Nice Day</h3>');
+		
+		// 2. 첫 버째 h3 태그 앞에 Today is Sunny. 를 붙인다.
+		// $('h3:eq(0)').before('<font color=red>Today is Sunny.</font>');
+		$('h3:eq(0)').prepend('<font color=red>Today is Sunny.</font>');
+		
+		var img1 = "<img src='./image/1.JPG'>";
+		var img2 = "<img src='./image/2.JPG'>";
+		var img3 = "<img src='./image/3.JPG'>";
+		var h1 = "<h1>++++++++ Pretty Girls ++++++++</h1>";
+		
+		// 3. body 태그의 제목(Pretty Girls)와 이미지 3개를 붙여보자
+		$('body').append(h1, img1, img2, img3);
+		$('img').addClass('angel');
+	});
+</script>
+</head>
+<body>
+	
+</body>
+</html>
