@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memberMapper">
+	<!-- resultMap -->
+	<resultMap type="member" id="memberSelectMap">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="password" column="passwd" />
+		<result property="address" column="addr" />
+	</resultMap>
+	
+	<!--sql 구문의 모듈화  -->
+	<sql id="select-member">
+		SELECT
+		id, passwd, name, addr
+		FROM member
+	</sql>
+	
+	<insert id="registerMember" parameterType="member">
+		INSERT INTO member(id, name, passwd, addr)
+		VALUES(#{id}, #{name}, #{password}, #{address})
+	</insert>
+	
+	<select id="idcheck" parameterType="string" resultType="string">
+		SELECT id FROM member
+		WHERE id = #{value}
+	</select>
+
+	<select id="login" parameterType="member" resultMap="memberSelectMap">
+		<include refid="select-member"/>
+		WHERE id = #{id} AND passwd = #{password}
+	</select>
+	
+	<update id="updateMember" parameterType="member">
+		UPDATE member
+		SET name = #{name}, passwd = #{password}, addr = #{address}
+		WHERE id = #{id}
+	</update>
+	
+	<select id="findByAddress" parameterType="string" resultMap="memberSelectMap">
+		<include refid="select-member"/>
+		WHERE addr = #{value}
+	</select>
+	
+	<select id="getAddressKind" resultType="string">
+		SELECT DISTINCT(addr)
+		FROM member
+	</select>
+	
+	<select id="getAllMember" resultMap="memberSelectMap">
+		<include refid="select-member"/>
+	</select>	
+</mapper>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
